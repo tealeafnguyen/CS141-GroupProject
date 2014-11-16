@@ -35,7 +35,7 @@ public class UserInterface {
 		System.out.println("5. Quit");
 		
 		try{
-			while(userChoice != 1 || userChoice !=2 || userChoice != 3 || userChoice != 4 || userChoice != 5){
+			while(userChoice != 1 && userChoice !=2 && userChoice != 3 && userChoice != 4 && userChoice != 5){
 				userChoice = kb.nextInt();
 				kb.nextLine();
 				
@@ -48,7 +48,7 @@ public class UserInterface {
 		return userChoice;
 	}
 	
-	@SuppressWarnings("unused")
+
 	public void FirstMenuRedirection(int userChoice) {
 		// TODO Auto-generated method stub
 		if(userChoice == 1){
