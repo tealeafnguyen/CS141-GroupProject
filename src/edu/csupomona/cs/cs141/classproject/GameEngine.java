@@ -8,16 +8,8 @@ import java.util.Scanner;
  * @author Isa
  *
  */
-@SuppressWarnings("unused")
 public class GameEngine {
 
-	Grid grid;
-	
-	public GameEngine(Grid grid){
-		
-		this.grid = grid;
-		
-	}
 	
 	
 }

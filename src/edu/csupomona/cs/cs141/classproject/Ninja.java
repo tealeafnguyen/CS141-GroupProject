@@ -7,7 +7,7 @@ import java.util.Random;
  * @author Isa
  *
  */
-public class Ninja extends Entity{
+public class Ninja extends Entity implements GridMember{
 	
 	private int direction;
 	
@@ -58,20 +58,24 @@ public class Ninja extends Entity{
 		int[] ninjaCoordinates = getPosition();
 		Random rand = new Random();
 		if(row == ninjaCoordinates[0]){
+			
 			if(col > ninjaCoordinates[1]){
 				direction = 2;
 			} else {
 				direction = 4;
 			}
 			playerInSight = true;
+			 
 		} 
 		else if(col == ninjaCoordinates[1]){
+			
 				if(row > ninjaCoordinates[0]){
 					direction = 1;
 				} else {
 					direction = 3;
 				}
 				playerInSight = true;
+			 
 		}
 		else {
 			direction = rand.nextInt(4) + 1;

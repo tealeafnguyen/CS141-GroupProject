@@ -44,18 +44,6 @@ public class Room implements GridMember{
 		return true;
 	}
 	
-	public boolean isRoom(){
-		return true;
-	}
-	
-	public boolean isEntity(){
-		return false;
-	}
-	
-	public boolean isPowerUp(){
-		return false;
-	}
-	
 	public boolean isSeen(){
 		return true;
 	}

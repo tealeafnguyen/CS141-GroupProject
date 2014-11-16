@@ -14,21 +14,11 @@ public class NinjaChamploo { //this class will eventually hold the main method.
 
 	/**
 	 * @param args
-	 * 
 	 */
 	public static void main(String[] args) { 
 		Scanner kb = new Scanner(System.in);
 		Taha player = new Taha();
-		int gameChoice = 0;
-		
 		Grid grid = new Grid(player);
-		UserInterface UI = new UserInterface(grid);
-		gameChoice = UI.printFirstMenu();
-		
-		if(gameChoice == 1){
-			
-		
-		
 		grid.printGrid();
 		int playerChoice = -1;
 		while(playerChoice != 0){
@@ -42,7 +32,6 @@ public class NinjaChamploo { //this class will eventually hold the main method.
 				System.out.println("Please enter correct input.");
 				kb.next();
 			}
-		}
 		}
 	}
 

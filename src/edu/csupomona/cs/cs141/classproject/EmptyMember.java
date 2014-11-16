@@ -36,19 +36,6 @@ public class EmptyMember implements GridMember {
 		return false;
 	}
 	
-	public boolean isEntity(){
-		return false;
-	}
 	
-	public boolean isPowerUp(){
-		return false;
-	}
 	
-	public boolean isRoom(){
-		return false;
-	}
-	
-	public boolean hasBriefcase(){
-		return false;
-	}
 }

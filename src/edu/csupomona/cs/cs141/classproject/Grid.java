@@ -43,8 +43,6 @@ public class Grid {
 		// spawns ninjas randomly, I am having trouble with having them spawn
 		// everywhere, not within
 		// 3 spaces of the player.
-		// fixed ^
-		
 		spawnNinjas();
 
 		//ninja = new Ninja();
@@ -94,11 +92,11 @@ public class Grid {
 		Random rand = new Random();
 		int[] ninjaCoordinates = new int[2];
 		for (Ninja currentNinja : ninjas) {
-			int ninRow = rand.nextInt(9 - 3) + 3;
-			int ninCol = rand.nextInt(9 - 3) + 3;
+			int ninRow = rand.nextInt(6) + 3;
+			int ninCol = rand.nextInt(6) + 3;
 			while (grid[ninRow][ninCol].isSomething()) {
-				ninRow = rand.nextInt(9 - 3) + 3;
-				ninCol = rand.nextInt(9 - 3) + 3;
+				ninRow = rand.nextInt(6) + 3;
+				ninCol = rand.nextInt(6) + 3;
 			}
 			ninjaCoordinates[0] = ninRow;
 			ninjaCoordinates[1] = ninCol;
@@ -147,10 +145,11 @@ public class Grid {
 		// differently in all the
 		// classes that inherit GridMember.)
 		try {
-			if (grid[row][col].isRoom()) {
+			if (grid[row][col] instanceof Room) {
+				Room room = (Room)grid[row][col];
 				if (playerDirection == 3) {
 					printGrid();
-					if (grid[row][col].hasBriefcase()) {
+					if (room.hasBriefcase()) {
 						System.out.println("has briefcase!");
 					}
 					System.out.println("You can pick up the case!");
@@ -260,7 +259,7 @@ public class Grid {
 						} else {
 
 							grid[ninCoord[0] + 1][ninCoord[1]] = currNinja;
-							if (!grid[ninCoord[0]][ninCoord[1]].isPowerUp()) {
+							if (!(grid[ninCoord[0]][ninCoord[1]] instanceof PowerUp)) {
 								grid[ninCoord[0]][ninCoord[1]] = new EmptyMember();
 							}
 							currNinja.setPosition((ninCoord[0] + 1), ninCoord[1]);
@@ -275,7 +274,7 @@ public class Grid {
 							currNinja.setPosition(ninCoord[0], ninCoord[1]);
 						} else {
 							grid[ninCoord[0]][ninCoord[1] + 1] = currNinja;
-							if (!grid[ninCoord[0]][ninCoord[1]].isPowerUp()) {
+							if (!(grid[ninCoord[0]][ninCoord[1]] instanceof PowerUp)) {
 								grid[ninCoord[0]][ninCoord[1]] = new EmptyMember();
 							}
 							currNinja.setPosition(ninCoord[0], (ninCoord[1] + 1));
@@ -290,7 +289,7 @@ public class Grid {
 							currNinja.setPosition(ninCoord[0], ninCoord[1]);
 						} else {
 							grid[ninCoord[0] - 1][ninCoord[1]] = currNinja;
-							if (!grid[ninCoord[0]][ninCoord[1]].isPowerUp()) {
+							if (!(grid[ninCoord[0]][ninCoord[1]] instanceof PowerUp)) {
 								grid[ninCoord[0]][ninCoord[1]] = new EmptyMember();
 							}
 							currNinja.setPosition((ninCoord[0] - 1), ninCoord[1]);
@@ -305,7 +304,7 @@ public class Grid {
 							currNinja.setPosition(ninCoord[0], ninCoord[1]);
 						} else {
 							grid[ninCoord[0]][ninCoord[1] - 1] = currNinja;
-							if (!grid[ninCoord[0]][ninCoord[1]].isPowerUp()) {
+							if (!(grid[ninCoord[0]][ninCoord[1]] instanceof PowerUp)) {
 								grid[ninCoord[0]][ninCoord[1]] = new EmptyMember();
 							}
 							currNinja.setPosition(ninCoord[0], (ninCoord[1] - 1));
@@ -321,10 +320,6 @@ public class Grid {
 		}
 	}
 
-
-	public GridMember[][] getGrid() {
-		return grid;
-	}
 
 	public GridMember getGridMember(int row, int col) {
 

@@ -15,14 +15,6 @@ public interface GridMember {
 	
 	boolean isSomething();
 	
-	boolean isEntity();
-	
-	boolean isPowerUp();
-	
-	boolean isRoom();
-	
-	boolean hasBriefcase();
-	
 	void see();
 	
 	void resetSee();

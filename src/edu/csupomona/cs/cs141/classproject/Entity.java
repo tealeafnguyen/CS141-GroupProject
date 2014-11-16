@@ -35,24 +35,8 @@ public abstract class Entity implements GridMember {
 		seen = false;
 	}
 	
-	public boolean isEntity(){
-		return true;
-	}
-	
 	public boolean isSomething(){
 		return true;
-	}
-	
-	public boolean isRoom(){
-		return false;
-	}
-	
-	public boolean isPowerUp(){
-		return false;
-	}
-	
-	public boolean hasBriefcase(){
-		return false;
 	}
 	
 	
