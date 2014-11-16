@@ -6,10 +6,12 @@ package edu.csupomona.cs.cs141.classproject;
 import java.util.Random;
 
 /**
- * @author Isa
+ * @author
  *
  */
-public class GameEngine {
+public class GameEngine { //Make sure to move most of this stuff back to the Grid class! GameEngine just needs methods
+			  //that deal with the User making changes from the UserInterface. The Grid can deal with spawns
+			  //and the movement of the ninjas.
 
 	private GridMember[][] grid;
 
