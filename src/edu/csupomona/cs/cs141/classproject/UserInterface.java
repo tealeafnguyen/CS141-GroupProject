@@ -15,6 +15,12 @@ public class UserInterface {
 	
 	private GridMember[][] gridCells; // needs to be removed, breaks encapsulation.
 	
+	Scanner kb = new Scanner(System.in);
+	
+	Taha tahaPlayer = new Taha();
+		
+	GameEngine gameEng = new GameEngine(tahaPlayer);
+	
 	public UserInterface(){
 
 //		gridCells = grid.printGrid();
@@ -35,7 +41,7 @@ public class UserInterface {
 		System.out.println("5. Quit");
 		
 		try{
-			while(userChoice != 1 && userChoice !=2 && userChoice != 3 && userChoice != 4 && userChoice != 5){
+			while(userChoice < 1 || userChoice > 5){
 				userChoice = kb.nextInt();
 				kb.nextLine();
 				
@@ -51,29 +57,21 @@ public class UserInterface {
 
 	public void FirstMenuRedirection(int userChoice) {
 		// TODO Auto-generated method stub
-		if(userChoice == 1){
-			theGameInterface();	
-		}
-		if(userChoice == 2){
-//			 load game stuff here	
-		}
-		if(userChoice == 3){
-//			About stuff here
-		}
-		if(userChoice == 4){
-//			how to play the game stuff here
-		}
-		if(userChoice == 5){
-			System.exit(0);
+		switch (userChoice){
+		case 1: theGameInterface();
+			break;
+		case 2: //call load game method here
+			break;
+		case 3: //call about method here
+			break;
+		case 4: //call help method here
+			break;
+		case 5: System.exit(0);
 		}
 	}
 
 	public void theGameInterface(){
-		Scanner kb = new Scanner(System.in);
-		Taha tahaPlayer = new Taha();
-		UserInterface UI = new UserInterface();
 		
-		GameEngine gameEng = new GameEngine(tahaPlayer);
 		gameEng.printGrid();
 		String playerChoice = "Q";
 		while(playerChoice != "A" || playerChoice != "W" || playerChoice != "S" || playerChoice != "D" || playerChoice != "0"){
