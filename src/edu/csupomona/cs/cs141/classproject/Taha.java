@@ -15,25 +15,25 @@ public class Taha extends Entity implements GridMember{
 		playerDirection = 1;
 	}
 	
-	public void move(int direction, Grid grid){
+	public void move(String direction, GameEngine grid){
 		int[] playerPosition = grid.getPlayerPostion();
 		int row = playerPosition[0];
 		int col = playerPosition[1];
 		switch(direction){
 		
-		case 1:
+		case "w":
 			playerDirection = 1;
 			grid.movePlayer(row-1, col);
 			break;
-		case 2:
+		case "d":
 			playerDirection = 2;
 			grid.movePlayer(row, col+1);
 			break;
-		case 3:
+		case "s":
 			playerDirection = 3;
 			grid.movePlayer(row+1, col);
 			break;
-		case 4:
+		case "a":
 			playerDirection = 4;
 			grid.movePlayer(row, col-1);
 			break;
