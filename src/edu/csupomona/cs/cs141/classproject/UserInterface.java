@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class UserInterface {
 
 	
-	private GridMember[][] gridCells;
+	private GridMember[][] gridCells; // needs to be removed, breaks encapsulation.
 	
 	public UserInterface(){
 
@@ -90,6 +90,11 @@ public class UserInterface {
 		}
 	}
 	
+
+//  No, this method should not be here since according to Rodriguez, passing in gridCells breaks encapsulation. Somehow,
+//  we have to make the method already existing in the grid class pass the entire grid(in string form) to GameEngine, and
+// then from GameEngine to UserInterface. Shouldn't be too hard. But yea, this should't be here anymore. And neither should
+// the GridCells field.
 
 //  Isaac, this method is also in the engine, do we need it here?	
 // 
