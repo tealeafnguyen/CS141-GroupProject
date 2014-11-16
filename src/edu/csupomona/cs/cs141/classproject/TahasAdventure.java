@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author Isa
  *
  */
-public class NinjaChamploo { //this class will eventually hold the main method.
+public class TahasAdventure { //this class will eventually hold the main method.
 
 	/**
 	 * @param args
