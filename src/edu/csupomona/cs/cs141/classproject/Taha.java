@@ -61,8 +61,6 @@ public class Taha extends Entity implements GridMember{
 			playerDirection = 4;
 			grid.movePlayer(row, col-1);
 			break;
-		default:
-			System.exit(0);
 		}
 		
 		
