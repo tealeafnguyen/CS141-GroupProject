@@ -23,6 +23,8 @@ public class GameEngine {
 	private GridMember player;
 
 	private int[] playerPosition = new int[2];
+	
+	private int playerDirection = 1; // moved from Taha class
 
 	public GameEngine(Taha tahaPlayer) {
 
@@ -56,6 +58,35 @@ public class GameEngine {
 
 		playerPosition[0] = 8;
 		playerPosition[1] = 0;
+	}
+	
+	public void move(String direction, GameEngine grid){ //moved from Taha class 
+		int[] playerPosition = grid.getPlayerPostion(); //So this still calls to grid
+		int row = playerPosition[0];                    //Going to change the methods that 
+		int col = playerPosition[1];                    //call to taha class
+		switch(direction){
+		
+		case "w":
+			playerDirection = 1;
+			grid.movePlayer(row-1, col);
+			break;
+		case "d":
+			playerDirection = 2;
+			grid.movePlayer(row, col+1);
+			break;
+		case "s":
+			playerDirection = 3;
+			grid.movePlayer(row+1, col);
+			break;
+		case "a":
+			playerDirection = 4;
+			grid.movePlayer(row, col-1);
+			break;
+		}	
+	}
+	
+	public int getPlayerDirection(){ //Moved from Taha class
+		return playerDirection;
 	}
 
 	public void spawnRooms() {
