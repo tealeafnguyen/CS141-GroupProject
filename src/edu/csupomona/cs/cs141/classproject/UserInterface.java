@@ -80,7 +80,7 @@ public class UserInterface {
 			try{
 				playerChoice = kb.next();
 				kb.nextLine();
-				tahaPlayer.move(playerChoice.toLowerCase(), gameEng);
+				gameEng.move(playerChoice.toLowerCase());
 			} catch(InputMismatchException e){
 				System.out.println("Please enter correct input.");
 				kb.next();
