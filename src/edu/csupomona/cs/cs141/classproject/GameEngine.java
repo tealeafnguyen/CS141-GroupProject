@@ -60,27 +60,27 @@ public class GameEngine {
 		playerPosition[1] = 0;
 	}
 	
-	public void move(String direction, GameEngine grid){ //moved from Taha class 
-		int[] playerPosition = grid.getPlayerPostion(); //So this still calls to grid
+	public void move(String direction){                      //moved from Taha class 
+		int[] playerPosition = getPlayerPostion();      //So this calls to itself
 		int row = playerPosition[0];                    //Going to change the methods that 
 		int col = playerPosition[1];                    //call to taha class
 		switch(direction){
 		
 		case "w":
 			playerDirection = 1;
-			grid.movePlayer(row-1, col);
+			movePlayer(row-1, col);
 			break;
 		case "d":
 			playerDirection = 2;
-			grid.movePlayer(row, col+1);
+			movePlayer(row, col+1);
 			break;
 		case "s":
 			playerDirection = 3;
-			grid.movePlayer(row+1, col);
+			movePlayer(row+1, col);
 			break;
 		case "a":
 			playerDirection = 4;
-			grid.movePlayer(row, col-1);
+			movePlayer(row, col-1);
 			break;
 		}	
 	}
