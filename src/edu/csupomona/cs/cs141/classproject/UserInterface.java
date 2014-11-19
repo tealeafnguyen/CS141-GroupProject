@@ -76,7 +76,9 @@ public class UserInterface {
 		String playerChoice = "Q";
 		while(playerChoice != "A" || playerChoice != "W" || playerChoice != "S" || playerChoice != "D" || playerChoice != "0"){
 		
+			gameEng.gameOverCheck();
 			System.out.println("W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
+			System.out.println("Lives: " + tahaPlayer.showLives() + " Ammo: " + tahaPlayer.showAmmo());	
 			try{
 				playerChoice = kb.next();
 				kb.nextLine();
