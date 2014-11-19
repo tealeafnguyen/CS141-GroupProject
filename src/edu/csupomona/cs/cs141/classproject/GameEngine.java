@@ -165,7 +165,7 @@ public class GameEngine {
 	public void movePlayer(int row, int col) {
 		int previousRow = playerPosition[0];
 		int previousCol = playerPosition[1];
-		int playerDirection = thePlayer.getPlayerDirection();
+		int playerDirection = getPlayerDirection();
 
 		// this try-catch block deals with moving the player object to a new
 		// position on the Grid.
