@@ -60,6 +60,65 @@ public class GameEngine {
 		playerPosition[1] = 0;
 	}
 	
+	public void playerRespawn(){
+		int row = 8;
+		int col = 0;
+		int previousRow = playerPosition[0];
+		int previousCol = playerPosition[1];
+		playerPosition[0] = row;
+		playerPosition[1] = col;
+		grid[row][col] = player;
+		thePlayer.setPosition(row, col);
+		grid[previousRow][previousCol] = new EmptyMember();
+		grid[8][0] = player;
+		thePlayer.setPosition(8, 0);
+	}
+	
+	public void gameOverCheck(){
+		if(thePlayer.showLives() <= 0){
+			System.out.println("Game Over");
+			System.exit(0);
+		}
+	}
+	
+	public void killCheck(Taha player){
+		for (Ninja currNinja : ninjas) {
+		int[] pp = player.getPosition();
+		int[] nc = currNinja.getPosition();
+		int row = pp[0];
+		int col = pp[1];
+		int nrow = nc[0];
+		int ncol = nc[1];
+		
+		if (nrow+1 == row && ncol == col){
+			System.out.println("You have died");
+			player.dies();
+			playerRespawn();
+			
+		}
+		else if (nrow-1 == row && ncol == col){
+			System.out.println("You have died");
+			player.dies();
+			playerRespawn();
+		}
+		else if (nrow == row && ncol+1 == col){
+			System.out.println("You have died");
+			player.dies();
+			playerRespawn();
+		}
+		else if (nrow == row && ncol-1 == col){
+			System.out.println("You have died");
+			player.dies();
+			playerRespawn();
+		}
+		else{
+			//Nothing happens here.
+		}	
+		}
+	}
+	
+	
+	
 	public void move(String direction){                      //moved from Taha class 
 		int[] playerPosition = getPlayerPostion();      //So this calls to itself
 		int row = playerPosition[0];                    //Going to change the methods that 
@@ -268,6 +327,7 @@ public class GameEngine {
 
 	public void moveNinjas(int row, int col) {
 		for (Ninja currNinja : ninjas) {
+			killCheck(thePlayer);
 			int direction;
 			boolean hasMoved = false;
 			boolean tried = false;
