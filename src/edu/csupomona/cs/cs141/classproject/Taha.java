@@ -62,7 +62,7 @@ public class Taha extends Entity implements GridMember{
 
 
 	public String toString() {
-		String result = "[P]";
+		String result = "[T]";
 		return result;
 	}
 
@@ -81,4 +81,4 @@ public class Taha extends Entity implements GridMember{
 
 
 }
-}
+

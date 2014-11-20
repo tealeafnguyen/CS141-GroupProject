@@ -16,7 +16,7 @@ public class EmptyMember implements GridMember {
 		if(isSeen()){
 			result = "[ ]";
 		}
-		else result = "[#}";
+		else result = "[#]";
 		return result;
 	}
 	

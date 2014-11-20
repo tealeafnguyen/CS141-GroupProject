@@ -11,4 +11,3 @@ public class Invincibility extends PowerUp implements GridMember {
 	}
 	
 }
-}

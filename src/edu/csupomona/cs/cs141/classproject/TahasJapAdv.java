@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author Isa
  *
  */
-public class TahasAdventure {
+public class TahasJapAdv {
 
 	/**
 	 * @param args
@@ -31,4 +31,4 @@ public class TahasAdventure {
 	}
 }
 
-}
+
