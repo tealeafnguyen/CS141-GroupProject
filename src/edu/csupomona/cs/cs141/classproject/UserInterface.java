@@ -146,7 +146,9 @@ public class UserInterface {
 			try {
 				playerChoice = kb.next();
 				kb.nextLine();
+					gameEng.resetSee();
 					gameEng.move(playerChoice.toLowerCase());
+					gameEng.see();
 				
 			} catch (InputMismatchException e) {
 				System.out.println("Please enter correct input.");
