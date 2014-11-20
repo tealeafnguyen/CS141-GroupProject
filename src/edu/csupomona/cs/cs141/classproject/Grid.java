@@ -327,13 +327,13 @@ public class Grid {
 			if (grid[row][col] instanceof Room) {
 				Room room = (Room) grid[row][col];
 				if (playerDirection == 3) {
-					printGrid();
+	//				printGrid();
 					if (room.hasBriefcase()) {
 						System.out.println("has briefcase!");
 					}
 					System.out.println("You can pick up the case!");
 				} else {
-					printGrid();
+	//				printGrid();
 					System.out.println("You can only enter rooms from "
 							+ "the North side!");
 				}
@@ -366,7 +366,7 @@ public class Grid {
 			playerPosition[0] = previousRow;
 			playerPosition[1] = previousCol;
 			grid[previousRow][previousCol] = player;
-			printGrid();
+	//		printGrid();
 			System.out.println("You can't walk through walls!");
 		}
 
