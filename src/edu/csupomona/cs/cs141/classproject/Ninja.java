@@ -98,8 +98,9 @@ public class Ninja extends Entity implements GridMember {
 	public String toString() {
 		String result;
 		
-		if(isShot){
-			result = "[#]";
+		
+		if(isShot || (!isSeen())){ //the !isSeen() will make it to where Ninjas won't show up when they're
+			result = "[#]";    //not in range. The method can be found in Entity.
 			return result;
 		}
 
