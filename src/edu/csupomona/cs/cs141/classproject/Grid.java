@@ -132,6 +132,7 @@ public class Grid {
 		inviGainedCheck();
 	}
 
+
 	public void bulletGainedCheck() {
 		if (extraBullet.isUsed() == false) {
 			bulletOverridenCheck();

@@ -118,43 +118,91 @@ public class UserInterface {
 	Scanner kb = new Scanner(System.in);
 	
 	
+
 	
 	public void options(){
-		int shootMove = 9;
-		while(shootMove != 0){
+		String playerChoice = "9";
+		while(playerChoice != "0"){
+		
 		gameEng.printGrid();
 		gameEng.gameOverCheck();
-		System.out.println("1 Shoot 2 Move");
+		System.out.println("1. Shoot, W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
 		playerStatus();
 		gameEng.playerTurnUsedWhileInvincible();
-		shootMove = kb.nextInt();
-		if (shootMove == 1){
+		
+		playerChoice = kb.next();
+		kb.nextLine();
+		switch(playerChoice){
+		case "1":
+		
 			playerShoot();
-		}
-		else{
-			theGameInterface();
-		}
-		}
-	}
-	
-	public void theGameInterface() {
 		
-		String playerChoice = "Q";
-		
-			System.out
-					.println("W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
-			try {
-				playerChoice = kb.next();
-				kb.nextLine();
+		case "W": 
+		case "w":
+		case "a":
+		case "A":
+		case "s":
+		case "S":
+		case "d":
+		case "D":
+
 					gameEng.resetSee();
 					gameEng.move(playerChoice.toLowerCase());
 					gameEng.see();
-				
-			} catch (InputMismatchException e) {
-				System.out.println("Please enter correct input.");
-				kb.next();
-			}
+					options();
+			
+		default:
+			System.out.println(playerChoice + " was not one of the choices, try again.");
+			
+			options();
 		}
+				
+		}
+		}
+		
+// this was the old one, just in case someone wants to refer to this:	
+//	public void options(){
+//		String playerChoice = "9";
+//		while(playerChoice != "0"){
+//		
+//		gameEng.printGrid();
+//		gameEng.gameOverCheck();
+//		System.out.println("1. Shoot, W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
+//		playerStatus();
+//		gameEng.playerTurnUsedWhileInvincible();
+//		
+//		playerChoice = kb.next();
+//		kb.nextLine();
+//		if (playerChoice == "1"){
+//			playerShoot();
+//		}
+//		else{
+//			theGameInterface();
+//		}
+//				
+//		}
+//		}
+	
+	
+// going to be removing this soon, implemented the functionality in options()
+//	public void theGameInterface() {
+//		
+//		String playerChoice = "Q";
+//		
+//			System.out
+//					.println("W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
+//			try {
+//				playerChoice = kb.next();
+//				kb.nextLine();
+//					gameEng.resetSee();
+//					gameEng.move(playerChoice.toLowerCase());
+//					gameEng.see();
+//				
+//			} catch (InputMismatchException e) {
+//				System.out.println("Please enter correct input.");
+//				kb.next();
+//			}
+//		}
 	
 	
 	public void playerShoot(){

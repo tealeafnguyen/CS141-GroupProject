@@ -11,7 +11,7 @@ public abstract class PowerUp implements GridMember{
 	
 	private boolean seen;
 	
-	private boolean isUsed;
+	private boolean isUsed; 
 
 	public boolean isSeen() {
 		return seen;
@@ -33,8 +33,11 @@ public abstract class PowerUp implements GridMember{
 		isUsed = true;
 	}
 	
+	
+	// isUsed was private so I had to do this, are you u sure we aren't breaking encapsulation?
 	public boolean isUsed(){
-		return isUsed;
+		boolean returningIsUsed = isUsed;
+		return returningIsUsed;
 	}
 	
 }
