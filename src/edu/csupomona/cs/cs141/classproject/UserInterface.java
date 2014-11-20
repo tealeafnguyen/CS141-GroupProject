@@ -13,82 +13,82 @@ import java.util.Scanner;
 public class UserInterface {
 
 	
-	private GridMember[][] gridCells; // needs to be removed, breaks encapsulation.
+//	private GridMember[][] gridCells; // needs to be removed, breaks encapsulation.
 	
-	Scanner kb = new Scanner(System.in);
+//	Scanner kb = new Scanner(System.in);
 	
-	Taha tahaPlayer = new Taha();
+//	Taha tahaPlayer = new Taha();
 		
-	GameEngine gameEng = new GameEngine(tahaPlayer);
+//	GameEngine gameEng = new GameEngine(tahaPlayer);
 	
-	public UserInterface(){
+//	public UserInterface(){
 
 //		gridCells = grid.printGrid();
 
-	}
+//	}
 	
-	public int FirstMenu(){
-		int userChoice = 0;
-		Taha tahaPlayer = new Taha();
-		GameEngine gameEng = new GameEngine(tahaPlayer);
+//	public int FirstMenu(){
+//		int userChoice = 0;
+//		Taha tahaPlayer = new Taha();
+//		GameEngine gameEng = new GameEngine(tahaPlayer);
 		
-		Scanner kb = new Scanner(System.in);
-		System.out.println("Welcome to Taha's Adventure!\n");
-		System.out.println("1. Start Game");
-		System.out.println("2. Load Game");
-		System.out.println("3. About");
-		System.out.println("4. Help");
-		System.out.println("5. Quit");
+//		Scanner kb = new Scanner(System.in);
+//		System.out.println("Welcome to Taha's Adventure!\n");
+//		System.out.println("1. Start Game");
+//		System.out.println("2. Load Game");
+//		System.out.println("3. About");
+//		System.out.println("4. Help");
+//		System.out.println("5. Quit");
 		
-		try{
-			while(userChoice < 1 || userChoice > 5){
-				userChoice = kb.nextInt();
-				kb.nextLine();
+//		try{
+//			while(userChoice < 1 || userChoice > 5){
+//				userChoice = kb.nextInt();
+//				kb.nextLine();
 				
 				
 				
-			}
-		} catch(InputMismatchException e){
-			System.out.println("Bad Input, Try again");
-		}
-		return userChoice;
-	}
+//			}
+//		} catch(InputMismatchException e){
+//			System.out.println("Bad Input, Try again");
+//		}
+//		return userChoice;
+//	}
 	
 
-	public void FirstMenuRedirection(int userChoice) {
+//	public void FirstMenuRedirection(int userChoice) {
 		// TODO Auto-generated method stub
-		switch (userChoice){
-		case 1: theGameInterface();
-			break;
-		case 2: //call load game method here
-			break;
-		case 3: //call about method here
-			break;
-		case 4: //call help method here
-			break;
-		case 5: System.exit(0);
-		}
-	}
+//		switch (userChoice){
+//		case 1: theGameInterface();
+//			break;
+//		case 2: //call load game method here
+//			break;
+//		case 3: //call about method here
+//			break;
+//		case 4: //call help method here
+//			break;
+//		case 5: System.exit(0);
+//		}
+//	}
 
-	public void theGameInterface(){
+//	public void theGameInterface(){
 		
-		gameEng.printGrid();
-		String playerChoice = "Q";
-		while(playerChoice != "A" || playerChoice != "W" || playerChoice != "S" || playerChoice != "D" || playerChoice != "0"){
+//		gameEng.printGrid();
+//		String playerChoice = "Q";
+//		while(playerChoice != "A" || playerChoice != "W" || playerChoice != "S" || playerChoice != "D" || playerChoice != "0"){
 		
-			gameEng.gameOverCheck();
-			System.out.println("W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
-			System.out.println("Lives: " + tahaPlayer.showLives() + " Ammo: " + tahaPlayer.showAmmo());	
-			try{
-				playerChoice = kb.next();
-				kb.nextLine();
-				gameEng.move(playerChoice.toLowerCase());
-			} catch(InputMismatchException e){
-				System.out.println("Please enter correct input.");
-				kb.next();
-			}
-		}
-	}
+//			gameEng.gameOverCheck();
+//			System.out.println("W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
+//			System.out.println("Lives: " + tahaPlayer.showLives() + " Ammo: " + tahaPlayer.showAmmo());	
+//			try{
+//				playerChoice = kb.next();
+//				kb.nextLine();
+//				gameEng.move(playerChoice.toLowerCase());
+//			} catch(InputMismatchException e){
+//				System.out.println("Please enter correct input.");
+//				kb.next();
+//			}
+//		}
+//	}
 	
 
 //  No, this method should not be here since according to Rodriguez, passing in gridCells breaks encapsulation. Somehow,
@@ -107,5 +107,63 @@ public class UserInterface {
 //		}
 //		System.out.println();
 //	}
+
+
+
+	//This part here is my code, the one above is Taha's
+	private Taha player = new Taha();
+	
+	GameEngine gameEng = new GameEngine(player);
+
+	Scanner kb = new Scanner(System.in);
+	
+	
+	
+	public void options(){
+		int shootMove = 9;
+		while(shootMove != 0){
+		gameEng.printGrid();
+		gameEng.gameOverCheck();
+		System.out.println("1 Shoot 2 Move");
+		playerStatus();
+		gameEng.playerTurnUsedWhileInvincible();
+		shootMove = kb.nextInt();
+		if (shootMove == 1){
+			playerShoot();
+		}
+		else{
+			theGameInterface();
+		}
+		}
+	}
+	
+	public void theGameInterface() {
+		
+		String playerChoice = "Q";
+		
+			System.out
+					.println("W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
+			try {
+				playerChoice = kb.next();
+				kb.nextLine();
+					gameEng.move(playerChoice.toLowerCase());
+				
+			} catch (InputMismatchException e) {
+				System.out.println("Please enter correct input.");
+				kb.next();
+			}
+		}
+	
+	
+	public void playerShoot(){
+		System.out.println("Which direction to shoot? 1 up 2 left 3 down 4 right");
+		int shootChoice = kb.nextInt();
+		gameEng.shootDirection(shootChoice);
+	}
+	
+	public void playerStatus(){
+		System.out.println("Lives: " + gameEng.lives()+ " Ammo: "+ gameEng.ammo());
+		System.out.println("Turns invincible: "+ gameEng.cantDie() );
+	}
 	
 }
