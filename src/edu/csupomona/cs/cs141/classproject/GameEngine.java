@@ -86,16 +86,22 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 	public Taha getPlayer() {
 		return thePlayer;
 	}
+	
+	public int lives() {
+		return thePlayer.showLives();
+	}
 
+	public int ammo() {
+		return thePlayer.showAmmo();
+	}
 
-
+	public int cantDie() {
+		return thePlayer.showCantDieTime();
+	}
 
 	public void shootDirection(int shootChoice) {
 		
 		grid.shootDirection(shootChoice);
 		
 	}
-
-	
-
 }
