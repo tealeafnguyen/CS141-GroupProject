@@ -72,7 +72,8 @@ public class UserInterface {
 	public void options(){
 		String playerChoice = "9";
 		while(playerChoice != "0"){
-		
+		gameEng.callGridSeeReset();
+		gameEng.callGridSeeAround();
 		gameEng.printGrid();
 		gameEng.gameOverCheck();
 		doIWinYet();
@@ -120,6 +121,8 @@ public class UserInterface {
 //		int shootMove = 9;
 //		while(shootMove != 0){
 //		
+//		gameEng.callGridSeeReset();
+//		gameEng.callGridSeeAround();
 //		gameEng.printGrid();
 //		gameEng.gameOverCheck();
 //		doIWinYet();
