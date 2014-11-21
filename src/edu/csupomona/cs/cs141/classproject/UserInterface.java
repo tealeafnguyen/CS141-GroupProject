@@ -17,8 +17,6 @@ public class UserInterface {
 	
 
 	
-// This part here is my code, the one above is Taha's
-	
 	private Taha player = new Taha();
 	
 	GameEngine gameEng = new GameEngine(player);
@@ -70,11 +68,6 @@ public class UserInterface {
 		case 5: System.exit(0);
 		}
 	}
-
-
-	
-	
-
 	
 	public void options(){
 		String playerChoice = "9";
@@ -82,6 +75,7 @@ public class UserInterface {
 		
 		gameEng.printGrid();
 		gameEng.gameOverCheck();
+		doIWinYet();
 		System.out.println("1. Shoot, W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
 		playerStatus();
 		gameEng.playerTurnUsedWhileInvincible();
@@ -90,9 +84,13 @@ public class UserInterface {
 		kb.nextLine();
 		switch(playerChoice){
 		case "1":
-		
-			playerShoot();
-		
+			if(gameEng.ammoCheck()){
+				playerShoot();
+			}
+			else{
+				System.out.println("You are out of ammo.");
+			}
+			break;
 		case "W": 
 		case "w":
 		case "a":
@@ -119,19 +117,24 @@ public class UserInterface {
 		
 // 	this was the old one, just in case someone wants to refer to this:	
 //	public void options(){
-//		String playerChoice = "9";
-//		while(playerChoice != "0"){
+//		int shootMove = 9;
+//		while(shootMove != 0){
 //		
 //		gameEng.printGrid();
 //		gameEng.gameOverCheck();
-//		System.out.println("1. Shoot, W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
+//		doIWinYet();
+//		System.out.println("1 Shoot 2 Move");
 //		playerStatus();
 //		gameEng.playerTurnUsedWhileInvincible();
-//		
-//		playerChoice = kb.next();
+//		shootMove = kb.nextInt();
 //		kb.nextLine();
 //		if (playerChoice == "1"){
-//			playerShoot();
+//			if(gameEng.ammoCheck()){
+//				playerShoot();
+//			}
+//			else{
+//				System.out.println("You are out of ammo.");
+//			}
 //		}
 //		else{
 //			theGameInterface();
@@ -160,6 +163,11 @@ public class UserInterface {
 //				kb.next();
 //			}
 //		}
+//		public void doIWinYet(){
+//			if(gameEng.recieveWinFromGrid()){
+//				System.out.println("You have won the game");
+//				System.exit(0);
+//		}
 	
 	
 	public void playerShoot(){
@@ -172,5 +180,11 @@ public class UserInterface {
 		System.out.println("Lives: " + gameEng.lives()+ " Ammo: "+ gameEng.ammo());
 		System.out.println("Turns invincible: "+ gameEng.cantDie() );
 	}
+	
+	public void doIWinYet(){
+		if(gameEng.recieveWinFromGrid()){
+			System.out.println("You have won the game");
+			System.exit(0);
+		}
 	
 }
