@@ -87,8 +87,15 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 	public int getPlayerDirection() { // Moved from Taha class
 		return playerDirection;
 	}
-
 	
+	public boolean recieveWinFromGrid(){
+		if(grid.showWin()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 
 	public Taha getPlayer() {
 		return thePlayer;
