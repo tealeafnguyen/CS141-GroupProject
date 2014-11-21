@@ -101,9 +101,9 @@ public class UserInterface {
 		case "d":
 		case "D":
 
-			gameEng.resetSee();
+			gameEng.resetSee(); //wouldnt it be better to use these instead of the ones at the top?
 			gameEng.move(playerChoice.toLowerCase());
-			gameEng.see();
+			gameEng.see();     //likewise
 			options();
 			
 		default:
