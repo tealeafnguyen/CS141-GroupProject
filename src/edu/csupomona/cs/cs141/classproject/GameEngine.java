@@ -39,6 +39,15 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 		}
 	}
 	
+	public boolean ammoCheck(){
+		if(thePlayer.showAmmo() > 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	public void printGrid(){
 		GridMember gm = null;
 		for(int i = 0; i < 9; i++){
