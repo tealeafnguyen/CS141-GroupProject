@@ -727,8 +727,8 @@ public class Grid {
 		int playerRow = -1;
 		int playerCol = -1;
 		int[] position = thePlayer.getPosition();
-		position[0] = playerRow;
-		position[1] = playerCol;
+		playerRow = position[0];
+		playerCol = position[1];
 		boolean ninjaAhead = false;
 		try {
 			switch (direction) {
