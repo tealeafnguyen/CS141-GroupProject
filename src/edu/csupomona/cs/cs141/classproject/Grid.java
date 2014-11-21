@@ -35,6 +35,8 @@ public class Grid {
 	private int[] bulletPosition = new int[2];
 
 	private int[] inviPosition = new int[2];
+	
+	private boolean win = false;
 
 	public Grid(Taha tahaPlayer) {
 
@@ -331,6 +333,7 @@ public class Grid {
 	//				printGrid();
 					if (room.hasBriefcase()) {
 						System.out.println("has briefcase!");
+						youWon();
 					}
 					System.out.println("You can pick up the case!");
 				} else {
@@ -722,6 +725,14 @@ public class Grid {
 	
 	public void fixTheNull(int row, int col){
 		grid[row][col] = new EmptyMember();
+	}
+	
+	public void youWon(){
+		win = true;
+	}
+	
+	public boolean showWin(){
+		return win;
 	}
 
 }
