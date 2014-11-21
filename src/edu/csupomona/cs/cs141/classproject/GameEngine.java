@@ -106,6 +106,10 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 		}
 	}
 
+	public void playerLook(int direction) {
+		grid.look(direction);
+	}
+
 	public Taha getPlayer() {
 		return thePlayer;
 	}
