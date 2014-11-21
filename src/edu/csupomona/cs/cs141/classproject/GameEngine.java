@@ -24,6 +24,15 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 		grid = new Grid(thePlayer);
 		
 	}
+	
+	public boolean recieveWinFromGrid(){
+		if(grid.showWin()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 
 
 	public void playerTurnUsedWhileInvincible() {
@@ -39,15 +48,6 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 		}
 	}
 	
-	public boolean ammoCheck(){
-		if(thePlayer.showAmmo() > 0){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
 	public void printGrid(){
 		GridMember gm = null;
 		for(int i = 0; i < 9; i++){
@@ -60,17 +60,6 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 		System.out.println();
 	}
 	
-	public void see(){
-		grid.playerSeeAround();
-	}
-	
-	public void resetSee(){
-		grid.resetPlayerSeeAround();
-	}
-	
-	public void callGridSeeReset(){
-		grid.resetSeeAll();
-	}
 
 	public void move(String direction) { 
 		int[] playerPosition = grid.getPlayerPostion(); 
@@ -96,22 +85,21 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 			break;
 		}
 	}
+	
+	public void playerLook(int direction) {
+		grid.look(direction);
+	}
 
 	public int getPlayerDirection() { // Moved from Taha class
 		return playerDirection;
 	}
 	
-	public boolean recieveWinFromGrid(){
-		if(grid.showWin()){
-			return true;
-		}
-		else{
-			return false;
-		}
+	public void callGridSeeAround(){
+		grid.playerSeeAround();
 	}
-
-	public void playerLook(int direction) {
-		grid.look(direction);
+	
+	public void callGridSeeReset(){
+		grid.resetSeeAll();
 	}
 
 	public Taha getPlayer() {
@@ -135,4 +123,14 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 		grid.shootDirection(shootChoice);
 		
 	}
+	
+	public boolean ammoCheck(){
+		if(thePlayer.showAmmo() > 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
 }
