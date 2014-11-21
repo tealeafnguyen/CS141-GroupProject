@@ -14,7 +14,7 @@ public class Grid {
 	
 	private GridMember[][] grid;
 
-	private Ninja[] ninjas = new Ninja[6];
+	private NinjaOctopi[] ninjas = new NinjaOctopi[6];
 
 	private Taha thePlayer;
 
@@ -41,7 +41,7 @@ public class Grid {
 	public Grid(Taha tahaPlayer) {
 
 		for (int x = 0; x < ninjas.length; x++) {
-			ninjas[x] = new Ninja();
+			ninjas[x] = new NinjaOctopi();
 		}
 		grid = new GridMember[9][9];
 		player = tahaPlayer;
@@ -281,7 +281,7 @@ public class Grid {
 	public void spawnNinjas() {
 		Random rand = new Random();
 		int[] ninjaCoordinates = new int[2];
-		for (Ninja currentNinja : ninjas) {
+		for (NinjaOctopi currentNinja : ninjas) {
 			int ninRow = rand.nextInt(6) + 3;
 			int ninCol = rand.nextInt(6) + 3;
 			while (grid[ninRow][ninCol].isSomething()) {
@@ -437,7 +437,7 @@ public class Grid {
 
 	public void killCheck() {
 
-		for (Ninja currNinja : ninjas) {
+		for (NinjaOctopi currNinja : ninjas) {
 			if(!currNinja.totallyGotShot()){
 			int[] pp = thePlayer.getPosition();
 			int[] nc = currNinja.getPosition();
@@ -482,7 +482,7 @@ public class Grid {
 	}
 
 	public void moveNinjas(int row, int col) {
-		for (Ninja currNinja : ninjas) {
+		for (NinjaOctopi currNinja : ninjas) {
 			int direction;
 			boolean hasMoved = false;
 			boolean tried = false;
@@ -624,12 +624,12 @@ public class Grid {
 		try {
 			switch (direction) {
 			case 1:
-				while (!(grid[row][col] instanceof Room) || !(grid[row][col] instanceof Ninja)) {
+				while (!(grid[row][col] instanceof Room) || !(grid[row][col] instanceof NinjaOctopi)) {
 					if (grid[row][col] instanceof Room) {
 						System.out.println("You shot a wall of a room"); //Prints when you shoot a room
 						break;                                           //only here to check if this works
-					} else if (grid[row][col] instanceof Ninja) {
-						for (Ninja currNinja: ninjas){
+					} else if (grid[row][col] instanceof NinjaOctopi) {
+						for (NinjaOctopi currNinja: ninjas){
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]){
 								System.out.println("Totally got shot"); //Placed here to check if ninja got shot
@@ -646,12 +646,12 @@ public class Grid {
 				}
 
 			case 2:
-				while (!(grid[row][col] instanceof Room) || !(grid[row][col] instanceof Ninja)) {
+				while (!(grid[row][col] instanceof Room) || !(grid[row][col] instanceof NinjaOctopi)) {
 					if (grid[row][col] instanceof Room) {
 						System.out.println("You shot a wall of a room"); //Prints when you shoot a room
 						break;                                           //only here to check if this works
-					} else if (grid[row][col] instanceof Ninja) {
-						for (Ninja currNinja: ninjas){
+					} else if (grid[row][col] instanceof NinjaOctopi) {
+						for (NinjaOctopi currNinja: ninjas){
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]){
 								System.out.println("Totally got shot"); //Placed here to check if ninja got shot
@@ -669,12 +669,12 @@ public class Grid {
 				}
 
 			case 3:
-				while (!(grid[row][col] instanceof Room) || !(grid[row][col] instanceof Ninja)) {
+				while (!(grid[row][col] instanceof Room) || !(grid[row][col] instanceof NinjaOctopi)) {
 					if (grid[row][col] instanceof Room) {
 						System.out.println("You shot a wall of a room"); //Prints when you shoot a room
 						break;                                           //only here to check if this works
-					} else if (grid[row][col] instanceof Ninja) {
-						for (Ninja currNinja: ninjas){
+					} else if (grid[row][col] instanceof NinjaOctopi) {
+						for (NinjaOctopi currNinja: ninjas){
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]){
 								System.out.println("Totally got shot"); //Placed here to check if ninja got shot
@@ -691,12 +691,12 @@ public class Grid {
 					row++;
 				}
 			case 4:
-				while (!(grid[row][col] instanceof Room) || !(grid[row][col] instanceof Ninja)) {
+				while (!(grid[row][col] instanceof Room) || !(grid[row][col] instanceof NinjaOctopi)) {
 					if (grid[row][col] instanceof Room) {
 						System.out.println("You shot a wall of a room"); //Prints when you shoot a room
 						break;                                           //only here to check if this works
-					} else if (grid[row][col] instanceof Ninja) {
-						for (Ninja currNinja: ninjas){
+					} else if (grid[row][col] instanceof NinjaOctopi) {
+						for (NinjaOctopi currNinja: ninjas){
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]){
 								System.out.println("Totally got shot"); //Placed here to check if ninja got shot
@@ -723,7 +723,7 @@ public class Grid {
 		}
 	}
 	
-	public boolean ifNinjaPlaceIsEmptyCell(Ninja currNinja){
+	public boolean ifNinjaPlaceIsEmptyCell(NinjaOctopi currNinja){
 		if (currNinja.totallyGotShot()){
 			return true;
 		}
@@ -742,7 +742,7 @@ public class Grid {
 		try {
 			switch (direction) {
 			case 1:
-				for (Ninja ninja : ninjas) {
+				for (NinjaOctopi ninja : ninjas) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[1] == playerCol) {
 						if (ninPosition[0] < playerRow) {
@@ -754,7 +754,7 @@ public class Grid {
 				grid[playerRow - 2][playerCol].see();
 				break;
 			case 2:
-				for (Ninja ninja : ninjas) {
+				for (NinjaOctopi ninja : ninjas) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[0] == playerRow) {
 						if (ninPosition[1] > playerCol) {
@@ -766,7 +766,7 @@ public class Grid {
 				grid[playerRow][playerCol + 2].see();
 				break;
 			case 3:
-				for (Ninja ninja : ninjas) {
+				for (NinjaOctopi ninja : ninjas) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[1] == playerCol) {
 						if (ninPosition[0] > playerRow) {
@@ -778,7 +778,7 @@ public class Grid {
 				grid[playerRow + 2][playerCol].see();
 				break;
 			case 4:
-				for (Ninja ninja : ninjas) {
+				for (NinjaOctopi ninja : ninjas) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[0] == playerRow) {
 						if (ninPosition[1] < playerCol) {

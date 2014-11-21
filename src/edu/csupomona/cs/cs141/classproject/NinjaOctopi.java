@@ -7,7 +7,7 @@ import java.util.Random;
  * @author Isa
  *
  */
-public class Ninja extends Entity implements GridMember {
+public class NinjaOctopi extends Entity implements GridMember {
 
 	private int direction;
 
