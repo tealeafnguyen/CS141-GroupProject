@@ -101,9 +101,9 @@ public class UserInterface {
 		case "d":
 		case "D":
 
-			gameEng.resetSee(); //wouldnt it be better to use these instead of the ones at the top?
+			//gameEng.resetSee(); //wouldnt it be better to use these instead of the ones at the top?
 			gameEng.move(playerChoice.toLowerCase());
-			gameEng.see();     //likewise
+			//gameEng.see();     //likewise
 			options();
 			
 		default:
@@ -190,4 +190,6 @@ public class UserInterface {
 			System.exit(0);
 		}
 	
+
+	}
 }
