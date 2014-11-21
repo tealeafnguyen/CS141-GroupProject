@@ -133,6 +133,14 @@ public class Grid {
 		radarGainedCheck();
 		inviGainedCheck();
 	}
+	
+	public void resetSeeAll(){
+		for (int k = 0; k < grid.length; k++) {
+			for (int l = 0; l < grid[k].length; l++) {
+				grid[k][l].resetSee();
+			}
+		}
+	}
 
 
 	public void bulletGainedCheck() {
