@@ -67,6 +67,10 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 	public void resetSee(){
 		grid.resetPlayerSeeAround();
 	}
+	
+	public void callGridSeeReset(){
+		grid.resetSeeAll();
+	}
 
 	public void move(String direction) { 
 		int[] playerPosition = grid.getPlayerPostion(); 
