@@ -100,12 +100,12 @@ public class Ninja extends Entity implements GridMember {
 		
 		
 		if(isShot || (!isSeen())){ //the !isSeen() will make it to where Ninjas won't show up when they're
-			result = "[*]";    //not in range. The method can be found in Entity.
+			result = "[O]";    //not in range. The method can be found in Entity.
 			return result;
 		}
 
 		else{
-			result = "[N]";
+			result = "[O]";
 			return result;
 		}
 	}

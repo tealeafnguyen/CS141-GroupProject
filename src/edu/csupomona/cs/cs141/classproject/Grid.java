@@ -719,6 +719,7 @@ public class Grid {
 		} finally {                                //please let me know
 			playerSeeAround();
 			resetPlayerSeeAround();
+			thePlayer.shoot();
 		}
 	}
 	

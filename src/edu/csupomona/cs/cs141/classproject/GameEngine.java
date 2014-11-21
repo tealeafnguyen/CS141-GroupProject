@@ -3,7 +3,6 @@
  */
 package edu.csupomona.cs.cs141.classproject;
 
-import java.util.Random;
 
 /**
  * @author

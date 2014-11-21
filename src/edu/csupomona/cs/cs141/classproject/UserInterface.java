@@ -153,7 +153,6 @@ public class UserInterface {
 //		String playerChoice = "Q";
 //		
 //			System.out
-//					.println("W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
 //			try {
 //				playerChoice = kb.next();
 //				kb.nextLine();
@@ -171,7 +170,6 @@ public class UserInterface {
 //				System.out.println("You have won the game");
 //				System.exit(0);
 //		}
-	
 	
 	public void playerShoot(){
 		System.out.println("Which direction to shoot? 1 up 2 left 3 down 4 right");
