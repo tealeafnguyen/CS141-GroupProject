@@ -723,6 +723,75 @@ public class Grid {
 		}
 	}
 	
+	public void look(int direction) {
+		int playerRow = -1;
+		int playerCol = -1;
+		int[] position = thePlayer.getPosition();
+		position[0] = playerRow;
+		position[1] = playerCol;
+		boolean ninjaAhead = false;
+		try {
+			switch (direction) {
+			case 1:
+				for (Ninja ninja : ninjas) {
+					int[] ninPosition = ninja.getPosition();
+					if (ninPosition[1] == playerCol) {
+						if (ninPosition[0] < playerRow) {
+							ninjaAhead = true;
+						}
+					}
+				}
+				grid[playerRow - 1][playerCol].see();
+				grid[playerRow - 2][playerCol].see();
+				break;
+			case 2:
+				for (Ninja ninja : ninjas) {
+					int[] ninPosition = ninja.getPosition();
+					if (ninPosition[0] == playerRow) {
+						if (ninPosition[1] > playerCol) {
+							ninjaAhead = true;
+						}
+					}
+				}
+				grid[playerRow][playerCol + 1].see();
+				grid[playerRow][playerCol + 2].see();
+				break;
+			case 3:
+				for (Ninja ninja : ninjas) {
+					int[] ninPosition = ninja.getPosition();
+					if (ninPosition[1] == playerCol) {
+						if (ninPosition[0] > playerRow) {
+							ninjaAhead = true;
+						}
+					}
+				}
+				grid[playerRow + 1][playerCol].see();
+				grid[playerRow + 2][playerCol].see();
+				break;
+			case 4:
+				for (Ninja ninja : ninjas) {
+					int[] ninPosition = ninja.getPosition();
+					if (ninPosition[0] == playerRow) {
+						if (ninPosition[1] < playerCol) {
+							ninjaAhead = true;
+						}
+					}
+				}
+				grid[playerRow][playerCol - 1].see();
+				grid[playerRow][playerCol - 2].see();
+				break;
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// do nothing
+		} finally {
+			if (ninjaAhead) {
+				System.out.println("Ninja ahead!");
+			} else {
+				System.out.println("All clear.");
+			}
+		}
+	}
+	
 	public void fixTheNull(int row, int col){
 		grid[row][col] = new EmptyMember();
 	}
