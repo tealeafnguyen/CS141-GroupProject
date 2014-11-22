@@ -29,20 +29,31 @@ public class NinjaOctopi extends Entity implements GridMember {
 		int[] playerCoordinates = player.getPosition();
 		int[] ninjaCoordinates = getPosition();
 		Random rand = new Random();
+		int range = -1; //initialize range, this value doesn't matter.
 		if (playerCoordinates[0] == ninjaCoordinates[0]) {
+			range = playerCoordinates[1] - ninjaCoordinates [1];
+			if(Math.abs(range) == 2){ //checks if absolute value of range is 2.
 			if (playerCoordinates[1] > ninjaCoordinates[1]) {
 				direction = 2;
 			} else {
 				direction = 4;
 			}
 			playerInSight = true;
+			} else {
+			playerInSight = false;
+		}
 		} else if (playerCoordinates[1] == ninjaCoordinates[1]) {
+			range = playerCoordinates[0] - ninjaCoordinates[0];
+			if(Math.abs(range) == 2){
 			if (playerCoordinates[0] > ninjaCoordinates[0]) {
 				direction = 1;
 			} else {
 				direction = 3;
 			}
 			playerInSight = true;
+			} else {
+				playerInSight = false;
+			}
 		} else {
 			direction = rand.nextInt(4) + 1;
 		}
