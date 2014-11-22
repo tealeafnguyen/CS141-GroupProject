@@ -14,7 +14,7 @@ public class Grid {
 	
 	private GridMember[][] grid;
 
-	private NinjaOctopi[] ninjas = new NinjaOctopi[6];
+	private NinjaOctopi[] ninjaOctopi = new NinjaOctopi[6];
 
 	private Taha thePlayer;
 
@@ -40,8 +40,8 @@ public class Grid {
 
 	public Grid(Taha tahaPlayer) {
 
-		for (int x = 0; x < ninjas.length; x++) {
-			ninjas[x] = new NinjaOctopi();
+		for (int x = 0; x < ninjaOctopi.length; x++) {
+			ninjaOctopi[x] = new NinjaOctopi();
 		}
 		grid = new GridMember[9][9];
 		player = tahaPlayer;
@@ -281,7 +281,7 @@ public class Grid {
 	public void spawnNinjas() {
 		Random rand = new Random();
 		int[] ninjaCoordinates = new int[2];
-		for (NinjaOctopi currentNinja : ninjas) {
+		for (NinjaOctopi currentNinja : ninjaOctopi) {
 			int ninRow = rand.nextInt(6) + 3;
 			int ninCol = rand.nextInt(6) + 3;
 			while (grid[ninRow][ninCol].isSomething()) {
@@ -359,7 +359,7 @@ public class Grid {
 				thePlayer.setPosition(row, col);
 				grid[previousRow][previousCol] = new EmptyMember();
 
-				moveNinjas(previousRow, previousCol);
+				moveNinjaOctopi(previousRow, previousCol);
 				playerSeeAround();
 				printGrid();
 				resetPlayerSeeAround();
@@ -370,7 +370,7 @@ public class Grid {
 				thePlayer.setPosition(row, col);
 				grid[previousRow][previousCol] = new EmptyMember();
 
-				moveNinjas(previousRow, previousCol);
+				moveNinjaOctopi(previousRow, previousCol);
 				playerSeeAround();
 				resetPlayerSeeAround();
 			}
@@ -437,7 +437,7 @@ public class Grid {
 
 	public void killCheck() {
 
-		for (NinjaOctopi currNinja : ninjas) {
+		for (NinjaOctopi currNinja : ninjaOctopi) {
 			if(!currNinja.totallyGotShot()){
 			int[] pp = thePlayer.getPosition();
 			int[] nc = currNinja.getPosition();
@@ -481,8 +481,8 @@ public class Grid {
 		}
 	}
 
-	public void moveNinjas(int row, int col) {
-		for (NinjaOctopi currNinja : ninjas) {
+	public void moveNinjaOctopi(int row, int col) {
+		for (NinjaOctopi currNinja : ninjaOctopi) {
 			int direction;
 			boolean hasMoved = false;
 			boolean tried = false;
@@ -629,7 +629,7 @@ public class Grid {
 						System.out.println("You shot a wall of a room"); //Prints when you shoot a room
 						break;                                           //only here to check if this works
 					} else if (grid[row][col] instanceof NinjaOctopi) {
-						for (NinjaOctopi currNinja: ninjas){
+						for (NinjaOctopi currNinja: ninjaOctopi){
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]){
 								System.out.println("Totally got shot"); //Placed here to check if ninja got shot
@@ -651,7 +651,7 @@ public class Grid {
 						System.out.println("You shot a wall of a room"); //Prints when you shoot a room
 						break;                                           //only here to check if this works
 					} else if (grid[row][col] instanceof NinjaOctopi) {
-						for (NinjaOctopi currNinja: ninjas){
+						for (NinjaOctopi currNinja: ninjaOctopi){
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]){
 								System.out.println("Totally got shot"); //Placed here to check if ninja got shot
@@ -674,7 +674,7 @@ public class Grid {
 						System.out.println("You shot a wall of a room"); //Prints when you shoot a room
 						break;                                           //only here to check if this works
 					} else if (grid[row][col] instanceof NinjaOctopi) {
-						for (NinjaOctopi currNinja: ninjas){
+						for (NinjaOctopi currNinja: ninjaOctopi){
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]){
 								System.out.println("Totally got shot"); //Placed here to check if ninja got shot
@@ -696,7 +696,7 @@ public class Grid {
 						System.out.println("You shot a wall of a room"); //Prints when you shoot a room
 						break;                                           //only here to check if this works
 					} else if (grid[row][col] instanceof NinjaOctopi) {
-						for (NinjaOctopi currNinja: ninjas){
+						for (NinjaOctopi currNinja: ninjaOctopi){
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]){
 								System.out.println("Totally got shot"); //Placed here to check if ninja got shot
@@ -742,7 +742,7 @@ public class Grid {
 		try {
 			switch (direction) {
 			case 1:
-				for (NinjaOctopi ninja : ninjas) {
+				for (NinjaOctopi ninja : ninjaOctopi) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[1] == playerCol) {
 						if (ninPosition[0] < playerRow) {
@@ -754,7 +754,7 @@ public class Grid {
 				grid[playerRow - 2][playerCol].see();
 				break;
 			case 2:
-				for (NinjaOctopi ninja : ninjas) {
+				for (NinjaOctopi ninja : ninjaOctopi) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[0] == playerRow) {
 						if (ninPosition[1] > playerCol) {
@@ -766,7 +766,7 @@ public class Grid {
 				grid[playerRow][playerCol + 2].see();
 				break;
 			case 3:
-				for (NinjaOctopi ninja : ninjas) {
+				for (NinjaOctopi ninja : ninjaOctopi) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[1] == playerCol) {
 						if (ninPosition[0] > playerRow) {
@@ -778,7 +778,7 @@ public class Grid {
 				grid[playerRow + 2][playerCol].see();
 				break;
 			case 4:
-				for (NinjaOctopi ninja : ninjas) {
+				for (NinjaOctopi ninja : ninjaOctopi) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[0] == playerRow) {
 						if (ninPosition[1] < playerCol) {
