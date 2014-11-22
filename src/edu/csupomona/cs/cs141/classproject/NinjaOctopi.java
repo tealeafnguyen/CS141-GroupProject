@@ -12,7 +12,7 @@ public class NinjaOctopi extends Entity implements GridMember {
 	private int direction;
 
 	private boolean playerInSight;
-	
+
 	private boolean isShot;
 
 	public int getDirection() {
@@ -85,11 +85,11 @@ public class NinjaOctopi extends Entity implements GridMember {
 	public void resetPlayerInSight() {
 		playerInSight = false;
 	}
-	
+
 	public void gotShot(){
 		isShot = true;
 	}
-	
+
 	public boolean totallyGotShot(){
 		return isShot;
 	}
@@ -97,8 +97,8 @@ public class NinjaOctopi extends Entity implements GridMember {
 	@Override
 	public String toString() {
 		String result;
-		
-		
+
+
 		if(isShot || (!isSeen())){ //the !isSeen() will make it to where Ninjas won't show up when they're
 			result = "[O]";    //not in range. The method can be found in Entity.
 			return result;
