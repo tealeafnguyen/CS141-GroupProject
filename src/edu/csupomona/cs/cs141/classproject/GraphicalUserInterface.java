@@ -28,7 +28,9 @@ public class GraphicalUserInterface extends JFrame  {
 		// gonna change this depending on how we code the gui
 		final int WINDOW_WIDTH = 500;
 		final int WINDOW_HEIGHT = 500;
+		// method in JFrame class, sets the window's width and height;
 		setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+		// makes the window visible.
 		setVisible(true);
 	}
 }
