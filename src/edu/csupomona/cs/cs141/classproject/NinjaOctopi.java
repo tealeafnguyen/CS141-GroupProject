@@ -2,12 +2,13 @@
  * 
  */
 package edu.csupomona.cs.cs141.classproject;
+import java.io.Serializable;
 import java.util.Random;
 /**
  * @author Isa
  *
  */
-public class NinjaOctopi extends Entity implements GridMember {
+public class NinjaOctopi extends Entity implements GridMember, Serializable {
 
 	private int direction;
 

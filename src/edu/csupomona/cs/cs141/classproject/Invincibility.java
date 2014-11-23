@@ -1,6 +1,8 @@
 package edu.csupomona.cs.cs141.classproject;
 
-public class Invincibility extends PowerUp implements GridMember {
+import java.io.Serializable;
+
+public class Invincibility extends PowerUp implements GridMember, Serializable {
 	public String toString() {
 		String result;
 		if (isSeen()) {

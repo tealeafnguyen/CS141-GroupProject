@@ -5,6 +5,7 @@ package edu.csupomona.cs.cs141.classproject;
 
 import java.awt.Desktop;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.InputMismatchException;
@@ -14,7 +15,7 @@ import java.util.Scanner;
  * @author Isa
  *
  */
-public class UserInterface {
+public class UserInterface implements Serializable {
 
 
 
@@ -61,9 +62,14 @@ public class UserInterface {
 	public void FirstMenuRedirection(int userChoice) {
 		// TODO Auto-generated method stub
 		switch (userChoice){
-		case 1: options();
-		break;
+		case 1: 
+			options();
+			break;
 		case 2: //call load game method here
+			System.out.println("Enter your save Game filename");
+			String fileName = kb.nextLine().toLowerCase();
+			gameEng.loadGame(fileName+".taha");
+			options();
 			break;
 		case 3: //call about method here
 			System.out.println("Creators:\n Isaac (aka IsaacDG)\n Thomas (aka Butthole Ripper)\n Taha (aka Jericho)\n James (aka kor3a)\n Fraz (aka muffinbottoms)\n");
@@ -88,6 +94,7 @@ public class UserInterface {
 	}
 
 	public void options(){
+		
 		String playerChoice = "9";
 		while(playerChoice != "0"){
 			gameEng.callGridSeeReset();
@@ -95,11 +102,11 @@ public class UserInterface {
 			gameEng.printGrid();
 			gameEng.gameOverCheck();
 			doIWinYet();
-			System.out.println("1. Shoot, W. Up, D. Right, S. Down, A. Left, or 0 to quit.");
+			System.out.println("W. Up, D. Right, S. Down, A. Left, 0 to quit, 1. Shoot, 2 to Save Game, 3 To go back to the Main Menu.");
 			playerStatus();
 			gameEng.playerTurnUsedWhileInvincible();
 
-			playerChoice = kb.next();
+			playerChoice = kb.next().toLowerCase();
 			kb.nextLine();
 			switch(playerChoice){
 			case "1":
@@ -110,20 +117,36 @@ public class UserInterface {
 					System.out.println("You are out of ammo.");
 				}
 				break;
-			case "W": 
 			case "w":
 			case "a":
-			case "A":
 			case "s":
-			case "S":
 			case "d":
-			case "D":
-
-				//gameEng.resetSee(); //wouldnt it be better to use these instead of the ones at the top?
 				gameEng.move(playerChoice.toLowerCase());
-				//gameEng.see();     //likewise
 				options();
-
+				break;
+			case "2":
+				System.out.println("Enter the Save File name");
+				String saveFileName = kb.nextLine();
+				gameEng.saveGame(saveFileName + ".taha");
+				options();
+				break;
+			case "3":
+				System.out.println("Are you sure you want to the Main Menu, all unsaved progress will be lost!");
+				System.out.println("Y/N");
+				String saveGameYesNo = kb.next().toLowerCase();
+				kb.nextLine();
+				switch(saveGameYesNo){
+				case "y":
+					FirstMenu();
+					break;
+				case "n":
+					options();
+				default:
+					options();
+				}
+			case "0":
+				System.exit(0);
+				break;
 			default:
 
 				System.out.println(playerChoice + " was not one of the choices, try again.");

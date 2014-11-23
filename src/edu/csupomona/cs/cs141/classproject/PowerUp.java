@@ -3,11 +3,13 @@
  */
 package edu.csupomona.cs.cs141.classproject;
 
+import java.io.Serializable;
+
 /**
  * @author Isa
  *
  */
-public abstract class PowerUp implements GridMember{
+public abstract class PowerUp implements GridMember, Serializable{
 	
 	private boolean seen;
 	

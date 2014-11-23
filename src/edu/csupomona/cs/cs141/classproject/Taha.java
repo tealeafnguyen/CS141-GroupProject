@@ -3,6 +3,8 @@
  */
 package edu.csupomona.cs.cs141.classproject;
 
+import java.io.Serializable;
+
 /**
  * @author Isa
  *
@@ -11,7 +13,7 @@ package edu.csupomona.cs.cs141.classproject;
  //Ultimately, we should move the move method into the game engine
  //For now I'm adding in attributes that the player should have
  
-public class Taha extends Entity implements GridMember{
+public class Taha extends Entity implements GridMember, Serializable{
 	
 	private int lives;
 

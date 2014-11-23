@@ -3,15 +3,23 @@
  */
 package edu.csupomona.cs.cs141.classproject;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 
 /**
  * @author
  *
  */
-public class GameEngine { //A lot of stuff has been moved to Grid
+public class GameEngine implements Serializable { //A lot of stuff has been moved to Grid
 
 	private Taha thePlayer;
-	
+
 	private Grid grid;
 
 	private int playerDirection; // moved from Taha class
@@ -21,9 +29,9 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 		thePlayer = new Taha();
 		playerDirection = thePlayer.getPlayerDirection();
 		grid = new Grid(thePlayer);
-		
+
 	}
-	
+
 	public boolean recieveWinFromGrid(){
 		if(grid.showWin()){
 			return true;
@@ -39,14 +47,14 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 			thePlayer.cantDieCheck();
 		}
 	}
-	
+
 	public void gameOverCheck() {
 		if (thePlayer.showLives() <= 0) {
 			System.out.println("Game Over");
 			System.exit(0);
 		}
 	}
-	
+
 	public void printGrid(){
 		GridMember gm = null;
 		for(int i = 0; i < 9; i++){
@@ -58,7 +66,7 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 		}
 		System.out.println();
 	}
-	
+
 
 	public void move(String direction) { 
 		int[] playerPosition = grid.getPlayerPostion(); 
@@ -84,7 +92,7 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 			break;
 		}
 	}
-	
+
 	public void playerLook(int direction) {
 		grid.look(direction);
 	}
@@ -92,11 +100,11 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 	public int getPlayerDirection() { // Moved from Taha class
 		return playerDirection;
 	}
-	
+
 	public void callGridSeeAround(){
 		grid.playerSeeAround();
 	}
-	
+
 	public void callGridSeeReset(){
 		grid.resetSeeAll();
 	}
@@ -104,7 +112,7 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 	public Taha getPlayer() {
 		return thePlayer;
 	}
-	
+
 	public int lives() {
 		return thePlayer.showLives();
 	}
@@ -118,11 +126,11 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 	}
 
 	public void shootDirection(int shootChoice) {
-		
+
 		grid.shootDirection(shootChoice);
-		
+
 	}
-	
+
 	public boolean ammoCheck(){
 		if(thePlayer.showAmmo() > 0){
 			return true;
@@ -130,6 +138,44 @@ public class GameEngine { //A lot of stuff has been moved to Grid
 		else{
 			return false;
 		}
+	}
+
+	public void saveGame(String fileName){
+
+		try {
+			FileOutputStream fos = new FileOutputStream(fileName);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(grid);
+			oos.close();
+			System.out.println("Game Saved Successfully.");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Save Game Unsuccessful.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Could not save game.");
+			e.printStackTrace();
+		}
+	}
+
+	public void loadGame(String fileName){
+		try {
+			FileInputStream fis = new FileInputStream(fileName);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			grid = (Grid) ois.readObject();
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }

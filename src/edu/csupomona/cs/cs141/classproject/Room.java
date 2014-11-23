@@ -3,11 +3,13 @@
  */
 package edu.csupomona.cs.cs141.classproject;
 
+import java.io.Serializable;
+
 /**
  * @author Isa
  *
  */
-public class Room implements GridMember{
+public class Room implements GridMember, Serializable{
 	
 	private boolean briefcase;
 	

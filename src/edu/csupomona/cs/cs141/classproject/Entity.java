@@ -3,11 +3,13 @@
  */
 package edu.csupomona.cs.cs141.classproject;
 
+import java.io.Serializable;
+
 /**
  * @author Isa
  *
  */
-public abstract class Entity implements GridMember {
+public abstract class Entity implements GridMember, Serializable {
 	
 	private boolean seen;
 	

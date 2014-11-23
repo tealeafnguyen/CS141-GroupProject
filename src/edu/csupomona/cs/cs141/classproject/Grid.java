@@ -1,5 +1,6 @@
 package edu.csupomona.cs.cs141.classproject;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Random;
  * @author Isa
  *
  */
-public class Grid {
+public class Grid implements Serializable {
 	
 	private GridMember[][] grid;
 

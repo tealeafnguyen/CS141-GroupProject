@@ -3,6 +3,8 @@
  */
 package edu.csupomona.cs.cs141.classproject;
 
+import java.io.Serializable;
+
 /**
  * @author Isa
  *

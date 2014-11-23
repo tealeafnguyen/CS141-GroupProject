@@ -1,7 +1,9 @@
 package edu.csupomona.cs.cs141.classproject;
 
+import java.io.Serializable;
 
-public class TrueRoom extends Room {
+
+public class TrueRoom extends Room implements Serializable {
 
 	private boolean briefcase;
 	
