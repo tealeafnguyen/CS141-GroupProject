@@ -4,6 +4,8 @@
 package edu.csupomona.cs.cs141.classproject;
 import java.io.Serializable;
 import java.util.Random;
+
+import javax.swing.ImageIcon;
 /**
  * @author Isa
  *
@@ -118,6 +120,20 @@ public class NinjaOctopi extends Entity implements GridMember, Serializable {
 
 		else{
 			result = "[O]";
+			return result;
+		}
+	}
+	public ImageIcon toImage() {
+		ImageIcon result;
+
+
+		if(isShot || (!isSeen())){
+			result = new ImageIcon("nothing.jpg");   
+			return result;
+		}
+
+		else{
+			result = new ImageIcon("octoSee.jpg");
 			return result;
 		}
 	}

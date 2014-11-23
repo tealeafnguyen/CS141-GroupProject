@@ -17,14 +17,14 @@ public class TahasJapAdv implements Serializable {
 	 * @param args
 	 */
 	//	Menu has been updated but disabled for now....
-			public static void main(String[] args) { 
-			
-			int userChoice = 0;
-			UserInterface UI = new UserInterface();
-			
-			userChoice = UI.FirstMenu();
-			UI.FirstMenuRedirection(userChoice);
-			}
+//			public static void main(String[] args) { 
+//			
+//			int userChoice = 0;
+//			UserInterface UI = new UserInterface();
+//			
+//			userChoice = UI.FirstMenu();
+//			UI.FirstMenuRedirection(userChoice);
+//			}
 
 	//This here is just a placeHolder for functionality.
 	//Please rework the UI and Main class later
@@ -35,11 +35,11 @@ public class TahasJapAdv implements Serializable {
 
 
 //	 testing gui
-//	public static void main(String[] args){
-//
-//		GraphicalUserInterface gui = new GraphicalUserInterface();
-//
-//	}
+	public static void main(String[] args){
+
+		GUIMainMenu gui = new GUIMainMenu();
+
+	}
 }
 
 

@@ -17,6 +17,7 @@ public class TrueRoom extends Room implements Serializable {
 		String result = "[b]";
 		return result;
 }
+	
 	public boolean hasBriefcase() {
 		return briefcase;
 	}

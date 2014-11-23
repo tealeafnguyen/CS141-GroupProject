@@ -314,6 +314,18 @@ public class Grid implements Serializable {
 		System.out.println();
 
 	}
+	
+	public void printGUIGrid() { // still need to make major changes
+
+		for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid[i].length; j++) {
+				System.out.print(grid[i][j].toImage());
+			}
+			System.out.println();
+		}
+		System.out.println();
+
+	}
 
 	public Taha getPlayer() {
 		return thePlayer;

@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.applet.*;
+
 
 import javax.swing.*;
 
@@ -17,7 +19,7 @@ import javax.swing.*;
  * @author Taha
  *
  */
-public class GraphicalUserInterface extends JFrame  {
+public class GUIMainMenu extends JFrame  {
 
 	private JPanel panel;
 	private JButton newGameButton;
@@ -26,7 +28,7 @@ public class GraphicalUserInterface extends JFrame  {
 	private JButton helpButton;
 	private JButton ExitButton; //might not use this.
 
-	public GraphicalUserInterface(){
+	public GUIMainMenu(){
 		// the title of the window
 		setTitle("Taha's Japanese Adventure in Japan");
 		// the operation of what the X does on the top right of the window
@@ -88,7 +90,9 @@ public class GraphicalUserInterface extends JFrame  {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+			setVisible(false);
+			GUIGame guig = new GUIGame();
+			
 		}
 
 	}

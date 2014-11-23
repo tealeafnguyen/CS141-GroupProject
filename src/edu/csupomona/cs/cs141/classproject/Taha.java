@@ -5,6 +5,8 @@ package edu.csupomona.cs.cs141.classproject;
 
 import java.io.Serializable;
 
+import javax.swing.ImageIcon;
+
 /**
  * @author Isa
  *
@@ -62,7 +64,15 @@ public class Taha extends Entity implements GridMember, Serializable{
 		cantDieDuration = 5;
 	}
 
-
+	public ImageIcon toImage(){
+		ImageIcon result = null;
+		
+			result = new ImageIcon("Taha.jpg");
+		
+		return result;
+		
+	}
+	
 	public String toString() {
 		String result = "[T]";
 		return result;

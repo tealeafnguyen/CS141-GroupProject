@@ -5,6 +5,8 @@ package edu.csupomona.cs.cs141.classproject;
 
 import java.io.Serializable;
 
+import javax.swing.ImageIcon;
+
 /**
  * @author Isa
  *
@@ -12,6 +14,8 @@ import java.io.Serializable;
 public interface GridMember {
 	
 	String toString();
+	
+	ImageIcon toImage();
 	
 	boolean isSeen();
 	
