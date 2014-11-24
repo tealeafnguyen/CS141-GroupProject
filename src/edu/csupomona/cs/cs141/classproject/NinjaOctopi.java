@@ -62,35 +62,70 @@ public class NinjaOctopi extends Entity implements GridMember, Serializable {
 		}
 
 	}
-
+	
 	public void setDirection(int row, int col) {
 
 		int[] ninjaCoordinates = getPosition();
-		Random rand = new Random();
-		if (row == ninjaCoordinates[0]) {
-
-			if (col > ninjaCoordinates[1]) {
-				direction = 2;
-			} else {
-				direction = 4;
+			Random rand = new Random();
+			int range = -1; //initialize range, this value doesn't matter.
+			if (row == ninjaCoordinates[0]) {
+				range = col - ninjaCoordinates [1];
+				if(Math.abs(range) == 2){ //checks if absolute value of range is 2.
+				if (col > ninjaCoordinates[1]) {
+					direction = 2;
+				} else {
+					direction = 4;
+				}
+				playerInSight = true;
+				} else {
+				playerInSight = false;
 			}
-			playerInSight = true;
-
-		} else if (col == ninjaCoordinates[1]) {
-
-			if (row > ninjaCoordinates[0]) {
-				direction = 1;
+			} else if (col == ninjaCoordinates[1]) {
+				range = row - ninjaCoordinates[0];
+				if(Math.abs(range) == 2){
+				if (row > ninjaCoordinates[0]) {
+					direction = 1;
+				} else {
+					direction = 3;
+				}
+				playerInSight = true;
+				} else {
+					playerInSight = false;
+				}
 			} else {
-				direction = 3;
+				direction = rand.nextInt(4) + 1;
 			}
-			playerInSight = true;
-
-		} else {
-			direction = rand.nextInt(4) + 1;
-			playerInSight = false;
-		}
 
 	}
+
+	// public void setDirection(int row, int col) {
+
+	// 	int[] ninjaCoordinates = getPosition();
+	// 	Random rand = new Random();
+	// 	if (row == ninjaCoordinates[0]) {
+
+	// 		if (col > ninjaCoordinates[1]) {
+	// 			direction = 2;
+	// 		} else {
+	// 			direction = 4;
+	// 		}
+	// 		playerInSight = true;
+
+	// 	} else if (col == ninjaCoordinates[1]) {
+
+	// 		if (row > ninjaCoordinates[0]) {
+	// 			direction = 1;
+	// 		} else {
+	// 			direction = 3;
+	// 		}
+	// 		playerInSight = true;
+
+	// 	} else {
+	// 		direction = rand.nextInt(4) + 1;
+	// 		playerInSight = false;
+	// 	}
+
+	// }
 
 	public boolean getPlayerInSight() {
 		return playerInSight;
