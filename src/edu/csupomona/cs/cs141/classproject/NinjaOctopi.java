@@ -43,6 +43,7 @@ public class NinjaOctopi extends Entity implements GridMember, Serializable {
 			}
 			playerInSight = true;
 			} else {
+			direction = rand.nextInt(4) + 1;
 			playerInSight = false;
 		}
 		} else if (playerCoordinates[1] == ninjaCoordinates[1]) {
@@ -55,6 +56,7 @@ public class NinjaOctopi extends Entity implements GridMember, Serializable {
 			}
 			playerInSight = true;
 			} else {
+				direction = rand.nextInt(4) + 1;
 				playerInSight = false;
 			}
 		} else {
@@ -78,6 +80,7 @@ public class NinjaOctopi extends Entity implements GridMember, Serializable {
 				}
 				playerInSight = true;
 				} else {
+					direction = rand.nextInt(4) + 1;
 				playerInSight = false;
 			}
 			} else if (col == ninjaCoordinates[1]) {
@@ -90,6 +93,7 @@ public class NinjaOctopi extends Entity implements GridMember, Serializable {
 				}
 				playerInSight = true;
 				} else {
+					direction = rand.nextInt(4) + 1;
 					playerInSight = false;
 				}
 			} else {
