@@ -93,7 +93,7 @@ public class GameEngine implements Serializable { //A lot of stuff has been move
 		}
 	}
 
-	public void playerLook(int direction) {
+	public void playerLook(String direction) {
 		grid.look(direction);
 	}
 

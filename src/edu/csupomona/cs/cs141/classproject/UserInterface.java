@@ -94,7 +94,7 @@ public class UserInterface implements Serializable {
 	}
 
 	public void options(){
-		
+
 		String playerChoice = "9";
 		while(playerChoice != "0"){
 			gameEng.callGridSeeReset();
@@ -102,14 +102,14 @@ public class UserInterface implements Serializable {
 			gameEng.printGrid();
 			gameEng.gameOverCheck();
 			doIWinYet();
-			System.out.println("W. Up, D. Right, S. Down, A. Left, 0 to quit, 1. Shoot, 2 to Save Game, 3 To go back to the Main Menu.");
+			System.out.println("W. Up, D. Right, S. Down, A. Left, 0 to quit, 2. Shoot, 3 Look Around, 4 to Save Game, 5 To go back to the Main Menu.");
 			playerStatus();
 			gameEng.playerTurnUsedWhileInvincible();
 
 			playerChoice = kb.next().toLowerCase();
 			kb.nextLine();
 			switch(playerChoice){
-			case "1":
+			case "2":
 				if(gameEng.ammoCheck()){
 					playerShoot();
 				}
@@ -124,26 +124,42 @@ public class UserInterface implements Serializable {
 				gameEng.move(playerChoice.toLowerCase());
 				options();
 				break;
-			case "2":
+			case "4":
 				System.out.println("Enter the Save File name");
 				String saveFileName = kb.nextLine();
 				gameEng.saveGame(saveFileName + ".taha");
 				options();
 				break;
-			case "3":
+			case "5":
 				System.out.println("Are you sure you want to the Main Menu, all unsaved progress will be lost!");
 				System.out.println("Y/N");
 				String saveGameYesNo = kb.next().toLowerCase();
 				kb.nextLine();
 				switch(saveGameYesNo){
 				case "y":
+					player = new Taha();
+					gameEng = new GameEngine(player);
 					FirstMenu();
 					break;
 				case "n":
+					System.out.println("Press Enter to Continue.");
+					kb.next();
 					options();
+					break;
 				default:
 					options();
+					break;
+
 				}
+				break;
+			case "3":
+				wantedToSee();
+				gameEng.printGrid();
+				System.out.println("Press 1 to continue.");
+				kb.next();
+				kb.nextLine();
+				options();
+				break;
 			case "0":
 				System.exit(0);
 				break;
@@ -228,7 +244,28 @@ public class UserInterface implements Serializable {
 			System.out.println("You have won the game");
 			System.exit(0);
 		}
-
-
 	}
+	public void doYouWannaSee(){
+		int lookFurther = 0;
+		System.out.println("Do you want to look further in a direction? 1 yes 2 no");
+		lookFurther = kb.nextInt();
+		if(lookFurther == 1){
+			wantedToSee();
+		}
+		else{
+			System.out.println("Guess you wanna be blind");
+		}
+	}
+
+	public void wantedToSee(){
+		String lookDirection = "0";
+		System.out.println("Which direction do you wanna look at?");
+		System.out.println("W up, D right, S down, A left" );
+		lookDirection = kb.next();
+		kb.nextLine();
+		gameEng.playerLook(lookDirection);
+	}
+
+
+
 }

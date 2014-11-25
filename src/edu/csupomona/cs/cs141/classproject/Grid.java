@@ -745,7 +745,7 @@ public class Grid implements Serializable {
 		}
 	}
 	
-	public void look(int direction) {
+	public void look(String direction) {
 		int playerRow = -1;
 		int playerCol = -1;
 		int[] position = thePlayer.getPosition();
@@ -754,7 +754,7 @@ public class Grid implements Serializable {
 		boolean ninjaAhead = false;
 		try {
 			switch (direction) {
-			case 1:
+			case "w":
 				for (NinjaOctopi ninja : ninjaOctopi) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[1] == playerCol) {
@@ -766,7 +766,7 @@ public class Grid implements Serializable {
 				grid[playerRow - 1][playerCol].see();
 				grid[playerRow - 2][playerCol].see();
 				break;
-			case 2:
+			case "d":
 				for (NinjaOctopi ninja : ninjaOctopi) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[0] == playerRow) {
@@ -778,7 +778,7 @@ public class Grid implements Serializable {
 				grid[playerRow][playerCol + 1].see();
 				grid[playerRow][playerCol + 2].see();
 				break;
-			case 3:
+			case "s":
 				for (NinjaOctopi ninja : ninjaOctopi) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[1] == playerCol) {
@@ -790,7 +790,7 @@ public class Grid implements Serializable {
 				grid[playerRow + 1][playerCol].see();
 				grid[playerRow + 2][playerCol].see();
 				break;
-			case 4:
+			case "a":
 				for (NinjaOctopi ninja : ninjaOctopi) {
 					int[] ninPosition = ninja.getPosition();
 					if (ninPosition[0] == playerRow) {
