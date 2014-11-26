@@ -184,6 +184,14 @@ public class Grid implements Serializable {
 		playerPosition[1] = 0;
 	}
 	
+	public void debugMode(){
+		for (int k = 0; k < grid.length; k++) {
+			for (int l = 0; l < grid[k].length; l++) {
+				grid[k][l].see();
+			}
+		}
+	}
+	
 	/**
 	 * The spawnRadar method will spawn at a random location
 	 * within the 9 x 9 grid. If something is on a current 

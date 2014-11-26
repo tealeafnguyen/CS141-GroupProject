@@ -17,7 +17,7 @@ public class ExtraBullet extends PowerUp implements Serializable {
 		if (isSeen()) {
 			result = "[B]";
 		} else
-			result = "[B]";
+			result = "[*]";
 		return result;
 	}
 

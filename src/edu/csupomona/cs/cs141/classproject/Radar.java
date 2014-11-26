@@ -18,7 +18,7 @@ public class Radar extends PowerUp implements GridMember, Serializable {
 		if (isSeen()) {
 			result = "[r]";
 		} else
-			result = "[r]";
+			result = "[*]";
 		return result;
 	}
 	public ImageIcon toImage(){

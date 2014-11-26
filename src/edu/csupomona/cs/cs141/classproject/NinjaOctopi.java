@@ -153,7 +153,7 @@ public class NinjaOctopi extends Entity implements GridMember, Serializable {
 
 
 		if(isShot || (!isSeen())){ //the !isSeen() will make it to where Ninjas won't show up when they're
-			result = "[O]";    //not in range. The method can be found in Entity.
+			result = "[*]";        //not in range. The method can be found in Entity.
 			return result;
 		}
 

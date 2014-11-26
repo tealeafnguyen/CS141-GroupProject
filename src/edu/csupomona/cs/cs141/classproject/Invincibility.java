@@ -10,7 +10,7 @@ public class Invincibility extends PowerUp implements GridMember, Serializable {
 		if (isSeen()) {
 			result = "[I]";
 		} else
-			result = "[I]";
+			result = "[*]";
 		return result;
 	}
 	public ImageIcon toImage(){

@@ -18,15 +18,13 @@ import java.util.Scanner;
 public class UserInterface implements Serializable {
 
 
-
-
-
-
 	private Taha player = new Taha();
 
 	GameEngine gameEng = new GameEngine(player);
 
 	Scanner kb = new Scanner(System.in);
+	
+	private boolean debug = false;
 
 	// Menu has been updated
 	// I've disabled it for now.
@@ -99,6 +97,7 @@ public class UserInterface implements Serializable {
 		while(playerChoice != "0"){
 			gameEng.callGridSeeReset();
 			gameEng.callGridSeeAround();
+			debugCheck();
 			gameEng.printGrid();
 			gameEng.gameOverCheck();
 			doIWinYet();
@@ -162,6 +161,10 @@ public class UserInterface implements Serializable {
 				break;
 			case "0":
 				System.exit(0);
+				break;
+			case "8":
+				System.out.println("Debug mode activated");
+				debug = true;
 				break;
 			default:
 
@@ -241,7 +244,7 @@ public class UserInterface implements Serializable {
 
 	public void doIWinYet(){
 		if(gameEng.recieveWinFromGrid()){
-			System.out.println("You have won the game");
+			System.out.println("You have won the game");			
 			System.exit(0);
 		}
 	}
@@ -264,6 +267,16 @@ public class UserInterface implements Serializable {
 		lookDirection = kb.next();
 		kb.nextLine();
 		gameEng.playerLook(lookDirection);
+	}
+	
+	public void debugCheck(){
+		if(debug == true){
+			debugActivate();
+		}
+	}
+	
+	public void debugActivate(){
+		gameEng.debug();
 	}
 
 

@@ -40,6 +40,10 @@ public class GameEngine implements Serializable { //A lot of stuff has been move
 			return false;
 		}
 	}
+	
+	public void debug(){
+		grid.debugMode();
+	}
 
 
 	public void playerTurnUsedWhileInvincible() {
