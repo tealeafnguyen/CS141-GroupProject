@@ -23,7 +23,7 @@ public class UserInterface implements Serializable {
 	GameEngine gameEng = new GameEngine(player);
 
 	Scanner kb = new Scanner(System.in);
-	
+
 	private boolean debug = false;
 
 	// Menu has been updated
@@ -101,14 +101,14 @@ public class UserInterface implements Serializable {
 			gameEng.printGrid();
 			gameEng.gameOverCheck();
 			doIWinYet();
-			System.out.println("W. Up, D. Right, S. Down, A. Left, 0 to quit, 2. Shoot, 3 Look Around, 4 to Save Game, 5 To go back to the Main Menu.");
+			System.out.println("W. Up, D. Right, S. Down, A. Left, 0 to quit, 1. Shoot, 2 Look Around, 3 to Save Game, 4 To go back to the Main Menu.");
 			playerStatus();
 			gameEng.playerTurnUsedWhileInvincible();
 
 			playerChoice = kb.next().toLowerCase();
 			kb.nextLine();
 			switch(playerChoice){
-			case "2":
+			case "1":
 				if(gameEng.ammoCheck()){
 					playerShoot();
 				}
@@ -120,16 +120,16 @@ public class UserInterface implements Serializable {
 			case "a":
 			case "s":
 			case "d":
-				gameEng.move(playerChoice.toLowerCase());
+				gameEng.move(playerChoice);
 				options();
 				break;
-			case "4":
+			case "3":
 				System.out.println("Enter the Save File name");
 				String saveFileName = kb.nextLine();
 				gameEng.saveGame(saveFileName + ".taha");
 				options();
 				break;
-			case "5":
+			case "4":
 				System.out.println("Are you sure you want to the Main Menu, all unsaved progress will be lost!");
 				System.out.println("Y/N");
 				String saveGameYesNo = kb.next().toLowerCase();
@@ -151,7 +151,7 @@ public class UserInterface implements Serializable {
 
 				}
 				break;
-			case "3":
+			case "2":
 				wantedToSee();
 				gameEng.printGrid();
 				System.out.println("Press 1 to continue.");
@@ -164,8 +164,14 @@ public class UserInterface implements Serializable {
 				break;
 			case "8":
 				System.out.println("Debug mode activated");
-				debug = true;
+				if(debug == false){
+					debug = true;	
+				} else {
+					debug = false;
+				}
+
 				break;
+
 			default:
 
 				System.out.println(playerChoice + " was not one of the choices, try again.");
@@ -268,13 +274,13 @@ public class UserInterface implements Serializable {
 		kb.nextLine();
 		gameEng.playerLook(lookDirection);
 	}
-	
+
 	public void debugCheck(){
 		if(debug == true){
 			debugActivate();
 		}
 	}
-	
+
 	public void debugActivate(){
 		gameEng.debug();
 	}

@@ -16,7 +16,7 @@ public class TahasJapAdv implements Serializable {
 	/**
 	 * @param args
 	 */
-	// Menu has been updated but disabled for now....
+
 
 	public static void main(String[] args) {
 		if (args.length == 0) {
