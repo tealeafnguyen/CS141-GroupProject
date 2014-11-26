@@ -26,6 +26,8 @@ public class UserInterface implements Serializable {
 
 	private boolean debug = false;
 
+	private boolean lookAroundUsedOnce = false;
+
 	// Menu has been updated
 	// I've disabled it for now.
 	//
@@ -95,6 +97,7 @@ public class UserInterface implements Serializable {
 
 		String playerChoice = "9";
 		while(playerChoice != "0"){
+			
 			gameEng.callGridSeeReset();
 			gameEng.callGridSeeAround();
 			debugCheck();
@@ -121,6 +124,7 @@ public class UserInterface implements Serializable {
 			case "s":
 			case "d":
 				gameEng.move(playerChoice);
+				resetLookAroundUsed();
 				options();
 				break;
 			case "3":
@@ -152,12 +156,7 @@ public class UserInterface implements Serializable {
 				}
 				break;
 			case "2":
-				wantedToSee();
-				gameEng.printGrid();
-				System.out.println("Press 1 to continue.");
-				kb.next();
-				kb.nextLine();
-				options();
+				checkLookAroundUsed();
 				break;
 			case "0":
 				System.exit(0);
@@ -252,6 +251,25 @@ public class UserInterface implements Serializable {
 		if(gameEng.recieveWinFromGrid()){
 			System.out.println("You have won the game");			
 			System.exit(0);
+		}
+	}
+	public void lookAroundUsed(){
+		lookAroundUsedOnce = true;
+	}
+	public void resetLookAroundUsed(){
+		lookAroundUsedOnce = false;
+	}
+	public void checkLookAroundUsed(){
+		if(lookAroundUsedOnce){
+			System.out.println("You can only look ahead once per turn.");
+		} else {
+			wantedToSee();
+			gameEng.printGrid();
+			System.out.println("Press 1 to continue.");
+			kb.next();
+			kb.nextLine();
+			lookAroundUsed();
+			options();
 		}
 	}
 	public void doYouWannaSee(){

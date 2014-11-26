@@ -35,14 +35,14 @@ import java.util.Random;
  *
  */
 public class Grid implements Serializable {
-	
+
 	/**
 	 * The GridMember object is created to hold the 9 x 9
 	 * grid that is the map of the game. The Grid Member class
 	 * is an interface for anything that is on the grid.
 	 */ 
 	private GridMember[][] grid;
-	
+
 	/**
 	 * The object NinjaOctopi was originally ninjas, but was changed
 	 * to add some flavor to the game. There are 6 ninja octopi objects
@@ -51,7 +51,7 @@ public class Grid implements Serializable {
 	 */
 
 	private NinjaOctopi[] ninjaOctopi = new NinjaOctopi[6];
-	
+
 	/**
 	 * The Taha object will be controlled by the player. The player
 	 * is to navigate the deadly 9 x 9 grid to find the briefcase to
@@ -60,7 +60,7 @@ public class Grid implements Serializable {
 	 */ 
 
 	private Taha thePlayer;
-	
+
 	/**
 	 * In the GridMember player object, this object will take on the
 	 * attributes of the Taha class which is shown in the constructor.
@@ -83,7 +83,7 @@ public class Grid implements Serializable {
 	 * of the briefcase is revealed by using this array.
 	 */ 
 	private int[] briefcase = new int[2];
-	
+
 	/**
 	 * The PowerUp radar is a power up that will
 	 * grant the player the ability to see where
@@ -97,7 +97,7 @@ public class Grid implements Serializable {
 	 * to the player when picked up by the player.
 	 */ 
 	private PowerUp extraBullet = new ExtraBullet();
-	
+
 	/**
 	 * The PowerUp cantDie is an invincibility object.
 	 * I called it cantDie because it was easier to write 
@@ -105,36 +105,36 @@ public class Grid implements Serializable {
 	 * , then the player can't die.'
 	 */ 
 	private PowerUp cantDie = new Invincibility();
-	
+
 	/**
 	 * The array radarPosition holds the location
 	 * of the radar when it initially spawns
 	 */ 
 
 	private int[] radarPosition = new int[2];
-	
+
 	/**
 	 * The array bulletPosition holds the location
 	 * of the extraBullet object when it initially spawns
 	 */ 
 
 	private int[] bulletPosition = new int[2];
-	
+
 	/**
 	 * The array inviPosition holds the location
 	 * of the cantDie object when it initially spawns
 	 */ 
 
 	private int[] inviPosition = new int[2];
-	
+
 	/**
 	 * The boolean win is initially set to
 	 * false until the player finds the room
 	 * with the briefcase.
 	 */ 
-	
+
 	private boolean win = false;
-	
+
 	/**
 	 * The contrustor grid will take the Taha
 	 * object as an arguments. The Grid Member object player
@@ -183,7 +183,7 @@ public class Grid implements Serializable {
 		playerPosition[0] = 8;
 		playerPosition[1] = 0;
 	}
-	
+
 	public void debugMode(){
 		for (int k = 0; k < grid.length; k++) {
 			for (int l = 0; l < grid[k].length; l++) {
@@ -191,7 +191,7 @@ public class Grid implements Serializable {
 			}
 		}
 	}
-	
+
 	/**
 	 * The spawnRadar method will spawn at a random location
 	 * within the 9 x 9 grid. If something is on a current 
@@ -217,7 +217,7 @@ public class Grid implements Serializable {
 
 		grid[iRow][iCol] = radar;
 	}
-	
+
 	/**
 	 * The spawnExtraBullet method will spawn at a random location
 	 * within the 9 x 9 grid. If something is on a current 
@@ -243,7 +243,7 @@ public class Grid implements Serializable {
 
 		grid[iRow][iCol] = extraBullet;
 	}
-	
+
 	/**
 	 * The spawnInvincibility method will spawn at a random location
 	 * within the 9 x 9 grid. If something is on a current 
@@ -269,7 +269,7 @@ public class Grid implements Serializable {
 
 		grid[iRow][iCol] = cantDie;
 	}
-	
+
 	/**
 	 * The runAllChecks method will call the check methods
 	 * for each of the power up, the check methods check the
@@ -281,13 +281,13 @@ public class Grid implements Serializable {
 		radarGainedCheck();
 		inviGainedCheck();
 	}
-	
+
 	/**
 	 * The resetSeeAll method will change the boolean of 
 	 * all Grid Members to false causing the player to 
 	 * not see further than they should be able to.
 	 */ 
-	
+
 	public void resetSeeAll(){
 		for (int k = 0; k < grid.length; k++) {
 			for (int l = 0; l < grid[k].length; l++) {
@@ -295,19 +295,19 @@ public class Grid implements Serializable {
 			}
 		}
 	}
-	
+
 	/**
 	 * The bulletGainedCheck method checks whether or not
 	 * the power up has been used. If it is false, then
 	 * the bulletOverridenCheck is called.
 	 */ 
-	 
+
 	public void bulletGainedCheck() {
 		if (extraBullet.isUsed() == false) {
 			bulletOverridenCheck();
 		}
 	}
-	
+
 	/**
 	 * The bulletOverridenCheck method checks the position
 	 * of the power up if it has been turned into
@@ -325,7 +325,7 @@ public class Grid implements Serializable {
 			grid[row][col] = extraBullet;
 		}
 	}
-	
+
 	/**
 	 * The radarGainedCheck method checks the object
 	 * whether or not it has been used by the player 
@@ -338,7 +338,7 @@ public class Grid implements Serializable {
 			radarOverridenCheck();
 		}
 	}
-	
+
 	/**
 	 * The radarOverridenCheck method will
 	 * check if the power up's location is
@@ -357,7 +357,7 @@ public class Grid implements Serializable {
 			grid[row][col] = radar;
 		}
 	}
-	
+
 	/**
 	 * The inviGainedCheck method checks if the
 	 * cantDie object is used or not. If false,
@@ -369,7 +369,7 @@ public class Grid implements Serializable {
 			inviOverridenCheck();
 		}
 	}
-	
+
 	/**
 	 * The inviOverridenCheck method will
 	 * check the cantDie object's location 
@@ -387,7 +387,7 @@ public class Grid implements Serializable {
 			grid[row][col] = cantDie;
 		}
 	}
-	
+
 	/**
 	 * The getPowerUp method will check if the location
 	 * that the player is heading into is a type of power
@@ -421,7 +421,7 @@ public class Grid implements Serializable {
 
 		grid[row][col] = new EmptyMember();
 	}
-	
+
 	/**
 	 * The radarGained method is called when the player
 	 * picks up the radar. This takes the location of 
@@ -435,7 +435,7 @@ public class Grid implements Serializable {
 		grid[briefcase[0]][briefcase[1]] = new TrueRoom();
 
 	}
-	
+
 	/**
 	 * The playerRespawn method is called whenever the
 	 * player has been slain. The method will take 
@@ -443,7 +443,7 @@ public class Grid implements Serializable {
 	 * and empty member and then put the player
 	 * back into their initial spawn point.
 	 */
-	 
+
 	public void playerRespawn() {
 		int row = 8;
 		int col = 0;
@@ -457,7 +457,7 @@ public class Grid implements Serializable {
 		grid[8][0] = player;
 		thePlayer.setPosition(8, 0);
 	}
-	
+
 	/**
 	 * The spawnRooms method is called at the constructor.
 	 * 9 rooms are spawned equidistant from each other. The
@@ -505,7 +505,7 @@ public class Grid implements Serializable {
 			startRow += 3;
 		}
 	}
-	
+
 	/**
 	 * The spawnNinjas method will spawn a ninja
 	 * in a random location as long as the location
@@ -536,7 +536,7 @@ public class Grid implements Serializable {
 		playerPosition[0] = 8;
 		playerPosition[1] = 0;
 	}
-	
+
 	/**
 	 * There is no real use to this method, please get rid
 	 * of this because the game engine can print it by itself.
@@ -553,7 +553,7 @@ public class Grid implements Serializable {
 		System.out.println();
 
 	}
-	
+
 	public void printGUIGrid() { // still need to make major changes
 
 		for (int i = 0; i < grid.length; i++) {
@@ -565,7 +565,7 @@ public class Grid implements Serializable {
 		System.out.println();
 
 	}
-	
+
 	/**
 	 * The getPlayer method will return the object of the
 	 * player to whatever calls it, the only thing
@@ -575,7 +575,7 @@ public class Grid implements Serializable {
 	public Taha getPlayer() {
 		return thePlayer;
 	}
-	
+
 	/**
 	 * The movePlayer method will take the player's current location
 	 * and try to move them 1 space towards a desired direction.
@@ -607,14 +607,14 @@ public class Grid implements Serializable {
 			if (grid[row][col] instanceof Room) {
 				Room room = (Room) grid[row][col];
 				if (playerDirection == 3) {
-	//				printGrid();
+					//				printGrid();
 					if (room.hasBriefcase()) {
 						System.out.println("has briefcase!");
 						youWon();
 					}
 					System.out.println("You can pick up the case!");
 				} else {
-	//				printGrid();
+					//				printGrid();
 					System.out.println("You can only enter rooms from "
 							+ "the North side!");
 				}
@@ -647,11 +647,11 @@ public class Grid implements Serializable {
 			playerPosition[0] = previousRow;
 			playerPosition[1] = previousCol;
 			grid[previousRow][previousCol] = player;
-	//		printGrid();
+			//		printGrid();
 			System.out.println("You can't walk through walls!");
 		}
 	}
-	
+
 	/**
 	 * resetPlayerSeeAround method take the adjacent
 	 * cell to the player and change the boolean of the
@@ -685,7 +685,7 @@ public class Grid implements Serializable {
 			// do nothing
 		}
 	}
-	
+
 	/**
 	 * The playerSeeAroundMethod will take the
 	 * locations that are adjacent to the player and change
@@ -719,7 +719,7 @@ public class Grid implements Serializable {
 		}
 
 	}
-	
+
 	/**
 	 * The killCheck method will cycle through all the
 	 * ninjas to check if the player is adjacent to them.
@@ -732,41 +732,41 @@ public class Grid implements Serializable {
 
 		for (NinjaOctopi currNinja : ninjaOctopi) {
 			if(!currNinja.totallyGotShot()){
-			int[] pp = thePlayer.getPosition();
-			int[] nc = currNinja.getPosition();
-			int row = pp[0];
-			int col = pp[1];
-			int nrow = nc[0];
-			int ncol = nc[1];
+				int[] pp = thePlayer.getPosition();
+				int[] nc = currNinja.getPosition();
+				int row = pp[0];
+				int col = pp[1];
+				int nrow = nc[0];
+				int ncol = nc[1];
 
-			if (nrow + 1 == row && ncol == col) {
-				System.out.println("You have died");
-				thePlayer.dies();
-				playerRespawn();
+				if (nrow + 1 == row && ncol == col) {
+					System.out.println("You have died");
+					thePlayer.dies();
+					playerRespawn();
 
-			} else if (nrow - 1 == row && ncol == col) {
-				System.out.println("You have died");
-				thePlayer.dies();
-				playerRespawn();
-			} else if (nrow == row && ncol + 1 == col) {
-				System.out.println("You have died");
-				thePlayer.dies();
-				playerRespawn();
-			} else if (nrow == row && ncol - 1 == col) {
-				System.out.println("You have died");
-				thePlayer.dies();
-				playerRespawn();
-			} else {
-				// Nothing happens here.
+				} else if (nrow - 1 == row && ncol == col) {
+					System.out.println("You have died");
+					thePlayer.dies();
+					playerRespawn();
+				} else if (nrow == row && ncol + 1 == col) {
+					System.out.println("You have died");
+					thePlayer.dies();
+					playerRespawn();
+				} else if (nrow == row && ncol - 1 == col) {
+					System.out.println("You have died");
+					thePlayer.dies();
+					playerRespawn();
+				} else {
+					// Nothing happens here.
+				}
 			}
-		}
 			else{
 				// Nothing happens here if totallyGotShot is true.
-				
+
 			}
 		}
 	}
-	
+
 	/**
 	 * The deathCheck method will check if the player is
 	 * not currently invincible. If they don't have that
@@ -778,7 +778,7 @@ public class Grid implements Serializable {
 			killCheck();
 		}
 	}
-	
+
 	/**
 	 * The moveNinjaOctopi method will loop through
 	 * all the ninja octopi to move. If the ninja octopi is
@@ -796,7 +796,7 @@ public class Grid implements Serializable {
 			boolean isDead = false;
 			do {
 				isDead = ifNinjaPlaceIsEmptyCell(currNinja);
-				
+
 				if (isDead){
 					hasMoved = true;
 					break;
@@ -891,7 +891,7 @@ public class Grid implements Serializable {
 			} while (!hasMoved && !isDead);
 		}
 	}
-	
+
 	/**
 	 * The getGridMember returns the object at a grids
 	 * location. This method is called from the
@@ -903,7 +903,7 @@ public class Grid implements Serializable {
 		return grid[row][col];
 
 	}
-	
+
 	/**
 	 * The getPlayerPosition method returns
 	 * the player's current position. This is 
@@ -914,7 +914,7 @@ public class Grid implements Serializable {
 	public int[] getPlayerPostion() {
 		return playerPosition;
 	}
-	
+
 	/**
 	 * The shootDirection method will take an argument
 	 * for a direction from the player. The method
@@ -946,7 +946,7 @@ public class Grid implements Serializable {
 			break;
 		}
 	}
-	
+
 	/**
 	 * The shoot method will scan through the array down
 	 * a certain direction passed from the shootDirection method
@@ -979,7 +979,7 @@ public class Grid implements Serializable {
 							}
 						}
 					} else {
-						
+
 					}
 					row--;
 				}
@@ -1002,7 +1002,7 @@ public class Grid implements Serializable {
 						}
 						break;
 					} else {
-				
+
 					}
 					col--;
 				}
@@ -1025,7 +1025,7 @@ public class Grid implements Serializable {
 						}
 						break;
 					} else {
-						
+
 					}
 					row++;
 				}
@@ -1047,21 +1047,21 @@ public class Grid implements Serializable {
 						}
 						break;
 					} else {
-						
+
 					}
 					col++;
 				}
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("You shot a wall"); //This is here only to check if a bullet makes it all the way through
-                                                   //to the end of the world, if this prints along with a ninja getting shot
+			//to the end of the world, if this prints along with a ninja getting shot
 		} finally {                                //please let me know
 			playerSeeAround();
 			resetPlayerSeeAround();
 			thePlayer.shoot();
 		}
 	}
-	
+
 	/**
 	 * The ifNinjaPlaceIsEmptyCell method will take a ninja
 	 * object as the argument. This will check if the current
@@ -1069,7 +1069,7 @@ public class Grid implements Serializable {
 	 * then the boolean of this method will return true, else false.
 	 * This prevents a dead ninja from taking action.
 	 */ 
-	
+
 	public boolean ifNinjaPlaceIsEmptyCell(NinjaOctopi currNinja){
 		if (currNinja.totallyGotShot()){
 			return true;
@@ -1078,7 +1078,7 @@ public class Grid implements Serializable {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * The look method will allow the player to look
 	 * an extra cell ahead. There is a loop to check till
@@ -1086,7 +1086,7 @@ public class Grid implements Serializable {
 	 * found, the game will give the player a warning that there
 	 * is a ninja down that direction.
 	 */ 
-	
+
 	public void look(String direction) {
 		int playerRow = -1;
 		int playerCol = -1;
@@ -1155,18 +1155,18 @@ public class Grid implements Serializable {
 			}
 		}
 	}
-	
+
 	/**
 	 * The fixTheNull method is called when a ninja is killed.
 	 * The area where the ninja died turns into a null and this
 	 * method will turn that location back into an Empty Member
 	 * object.
 	 */ 
-	
+
 	public void fixTheNull(int row, int col){
 		grid[row][col] = new EmptyMember();
 	}
-	
+
 	/**
 	 * This method is called when the player finds
 	 * the briefcase. win is true.
@@ -1174,12 +1174,12 @@ public class Grid implements Serializable {
 	public void youWon(){
 		win = true;
 	}
-	
+
 	/**
 	 * The showWin method will return win to the
 	 * game engine.
 	 */ 
-	
+
 	public boolean showWin(){
 		return win;
 	}
