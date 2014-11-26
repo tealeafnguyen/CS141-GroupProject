@@ -11,6 +11,8 @@ import java.net.URISyntaxException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import edu.csupomona.cs.cs141.classproject.GUIGame.MainMenuActionListener;
+
 /**
  * @author Isa
  *
@@ -103,6 +105,13 @@ public class UserInterface implements Serializable {
 			debugCheck();
 			gameEng.printGrid();
 			gameEng.gameOverCheck();
+			if(gameEng.gameOverCheck()){
+				player = new Taha();
+				gameEng = new GameEngine(player);
+				FirstMenu();
+			}
+				
+			
 			doIWinYet();
 			System.out.println("W. Up, D. Right, S. Down, A. Left, 0 to quit, 1. Shoot, 2 Look Around, 3 to Save Game, 4 To go back to the Main Menu.");
 			playerStatus();
@@ -250,7 +259,12 @@ public class UserInterface implements Serializable {
 	public void doIWinYet(){
 		if(gameEng.recieveWinFromGrid()){
 			System.out.println("You have won the game");			
-			System.exit(0);
+			System.out.println("Press 1 to continue.");
+			kb.nextInt();
+			kb.nextLine();
+			player = new Taha();
+			gameEng = new GameEngine(player);
+			FirstMenu();
 		}
 	}
 	public void lookAroundUsed(){

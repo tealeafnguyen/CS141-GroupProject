@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Scanner;
 
 
 /**
@@ -52,10 +53,16 @@ public class GameEngine implements Serializable { //A lot of stuff has been move
 		}
 	}
 
-	public void gameOverCheck() {
+	public boolean gameOverCheck() {
 		if (thePlayer.showLives() <= 0) {
+			Scanner kb = new Scanner(System.in);
 			System.out.println("Game Over");
-			System.exit(0);
+			System.out.println("Press 1 to continue.");
+			kb.nextInt();
+			kb.nextLine();
+			return true;
+		} else{
+			return false;
 		}
 	}
 
