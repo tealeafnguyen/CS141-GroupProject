@@ -35,13 +35,15 @@ import java.util.Random;
  */
 public class Grid implements Serializable {
 
+	
+	
+	static final long serialVersionUID = 123456789L;
 	/**
 	 * The GridMember object is created to hold the 9 x 9 grid that is the map
 	 * of the game. The Grid Member class is an interface for anything that is
 	 * on the grid.
 	 */
 	private GridMember[][] grid;
-
 	/**
 	 * The object NinjaOctopi was originally ninjas, but was changed to add some
 	 * flavor to the game. There are 6 ninja octopi objects in the game. Their

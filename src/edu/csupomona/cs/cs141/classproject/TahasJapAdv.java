@@ -23,8 +23,8 @@ public class TahasJapAdv implements Serializable {
 			int userChoice = 0;
 			UserInterface UI = new UserInterface();
 
-			userChoice = UI.FirstMenu();
-			UI.FirstMenuRedirection(userChoice);
+			UI.FirstMenu();
+
 		} else {
 			if (args[0].equals("-gui")) {
 				GUIMainMenu gui = new GUIMainMenu();

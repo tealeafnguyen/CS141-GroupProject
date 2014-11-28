@@ -4,12 +4,21 @@
 package edu.csupomona.cs.cs141.classproject;
 
 import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+
+
+
+
 
 import edu.csupomona.cs.cs141.classproject.GUIGame.MainMenuActionListener;
 
@@ -33,7 +42,7 @@ public class UserInterface implements Serializable {
 	// Menu has been updated
 	// I've disabled it for now.
 	//
-	public int FirstMenu(){
+	public void FirstMenu(){
 		int userChoice = 0;
 
 
@@ -46,17 +55,19 @@ public class UserInterface implements Serializable {
 		System.out.println("5. Quit");
 
 		try{
-			while(userChoice < 1 || userChoice > 5){
-				userChoice = kb.nextInt();
-				kb.nextLine();
+
+			userChoice = kb.nextInt();
+			kb.nextLine();
+			FirstMenuRedirection(userChoice);
 
 
 
-			}
 		} catch(InputMismatchException e){
 			System.out.println("Bad Input, Try again");
+			FirstMenu();
+			
 		}
-		return userChoice;
+	
 	}
 
 
@@ -67,17 +78,22 @@ public class UserInterface implements Serializable {
 		case 1: 
 			options();
 			break;
-		case 2: //call load game method here
-			System.out.println("Enter your save Game filename");
+		case 2: //call load game method here..... NO
+			printTheListofSaves();
+			System.out.println("Enter your save Game filename, or press N to go back to Main Menu");
 			String fileName = kb.nextLine().toLowerCase();
+			if(fileName.equals("n")){
+				FirstMenu();
+				break;
+			}
 			gameEng.loadGame(fileName+".taha");
 			options();
 			break;
-		case 3: //call about method here
+		case 3: //call about method here..... NO
 			System.out.println("Creators:\n Isaac (aka IsaacDG)\n Thomas (aka Butthole Ripper)\n Taha (aka Jericho)\n James (aka kor3a)\n Fraz (aka muffinbottoms)\n");
 			FirstMenu();
 			break;
-		case 4: //call help method here
+		case 4: //call help method here.... NO
 			if(Desktop.isDesktopSupported())
 			{
 				try {
@@ -97,9 +113,9 @@ public class UserInterface implements Serializable {
 
 	public void options(){
 
-		String playerChoice = "9";
+		String playerChoice = "AWWWWWWWWWWW YEEEEEEEEEE, LET THE GAMES BEGIN";
 		while(playerChoice != "0"){
-			
+
 			gameEng.callGridSeeReset();
 			gameEng.callGridSeeAround();
 			debugCheck();
@@ -110,8 +126,8 @@ public class UserInterface implements Serializable {
 				gameEng = new GameEngine(player);
 				FirstMenu();
 			}
-				
-			
+
+
 			doIWinYet();
 			System.out.println("W. Up, D. Right, S. Down, A. Left, 0 to quit, 1. Shoot, 2 Look Around, 3 to Save Game, 4 To go back to the Main Menu.");
 			playerStatus();
@@ -139,6 +155,7 @@ public class UserInterface implements Serializable {
 			case "3":
 				System.out.println("Enter the Save File name");
 				String saveFileName = kb.nextLine();
+				makeAListofSaves(saveFileName);
 				gameEng.saveGame(saveFileName + ".taha");
 				options();
 				break;
@@ -297,7 +314,32 @@ public class UserInterface implements Serializable {
 			System.out.println("Guess you wanna be blind");
 		}
 	}
+	public void makeAListofSaves(String FileName){
+		try {
 
+			FileWriter ff = new FileWriter(".savedata", true);
+			PrintWriter pw = new PrintWriter(ff);
+			pw.println("FileName");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	public void printTheListofSaves(){
+		File fileReader = new File(".savedata");
+		try {
+			Scanner fileR = new Scanner(fileReader);
+			while(fileR.hasNextLine()){
+				System.out.println("Here are the List of current saved game files:");
+				System.out.println(fileR.nextLine());
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	public void wantedToSee(){
 		String lookDirection = "0";
 		System.out.println("Which direction do you wanna look at?");
