@@ -390,6 +390,9 @@ public class UserInterface implements Serializable {
 			FileInputStream fis = new FileInputStream(fileName);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			gameEng = (GameEngine) ois.readObject();
+			Player testPlayer = gameEng.getPlayer();
+			System.out.println(testPlayer.showLives()); // do these two match up?
+			System.out.println(gameEng.lives());
 			ois.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
