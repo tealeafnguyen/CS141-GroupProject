@@ -126,7 +126,7 @@ public class UserInterface implements Serializable {
 			gameEng.callGridSeeReset();
 			gameEng.callGridSeeAround();
 			debugCheck();
-			gameEng.printGrid();
+			printGrid();
 			gameEng.gameOverCheck();
 			if(gameEng.gameOverCheck()){
 				player = new Taha();
@@ -302,7 +302,7 @@ public class UserInterface implements Serializable {
 			System.out.println("You can only look ahead once per turn.");
 		} else {
 			wantedToSee();
-			gameEng.printGrid();
+			printGrid();
 			System.out.println("Press 1 to continue.");
 			kb.next();
 			kb.nextLine();
@@ -408,6 +408,18 @@ public class UserInterface implements Serializable {
 
 
 	}
+	
+	public void printGrid() {
+		GridMember gm = null;
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				gm = gameEng.getGM(i, j);
+				System.out.print(gm.toString());
+			}
+			System.out.println();
+		}
+	}
+	
 	public void printLogo(){
 		try {
 			
