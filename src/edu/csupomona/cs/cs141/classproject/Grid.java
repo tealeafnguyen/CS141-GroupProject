@@ -1248,5 +1248,10 @@ public class Grid implements Serializable {
 			e.printStackTrace();
 		}
 	}
+	
+	public void setPlayer(Taha player) {
+		thePlayer = player;
+		this.player = player;
+	}
 
 }
