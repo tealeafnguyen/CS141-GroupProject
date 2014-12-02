@@ -24,6 +24,12 @@
  */
 package edu.csupomona.cs.cs141.classproject;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Random;
 
@@ -35,8 +41,6 @@ import java.util.Random;
  */
 public class Grid implements Serializable {
 
-	
-	
 	static final long serialVersionUID = 123456789L;
 	/**
 	 * The GridMember object is created to hold the 9 x 9 grid that is the map
@@ -59,7 +63,7 @@ public class Grid implements Serializable {
 	 * explained in the Taha class.
 	 */
 
-	private Taha thePlayer;
+	private static Taha thePlayer;
 
 	/**
 	 * In the GridMember player object, this object will take on the attributes
@@ -81,7 +85,7 @@ public class Grid implements Serializable {
 	 * power up which is collected by the player. The location of the briefcase
 	 * is revealed by using this array.
 	 */
-	private int[] briefcase = new int[2];
+	private static int[] briefcase = new int[2];
 
 	/**
 	 * The PowerUp radar is a power up that will grant the player the ability to
@@ -132,7 +136,7 @@ public class Grid implements Serializable {
 	private boolean win = false;
 
 	/**
-	 * The contrustor grid will take the Taha object as an arguments. The Grid
+	 * The constructor grid will take the Taha object as an arguments. The Grid
 	 * Member object player will then take on the Taha object. The ninjaOctopi
 	 * objects are created in the size 6 array. The 9 x 9 grid will initially be
 	 * covered in EmptyMember objects. Then the spawn Rooms method is called to
@@ -932,24 +936,24 @@ public class Grid implements Serializable {
 						|| !(grid[row][col] instanceof NinjaOctopi)) {
 					if (grid[row][col] instanceof Room) {
 						System.out.println("You shot a wall of a room"); // Prints
-																			// when
-																			// you
-																			// shoot
-																			// a
-																			// room
+						// when
+						// you
+						// shoot
+						// a
+						// room
 						break; // only here to check if this works
 					} else if (grid[row][col] instanceof NinjaOctopi) {
 						for (NinjaOctopi currNinja : ninjaOctopi) {
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]) {
 								System.out.println("Totally got shot"); // Placed
-																		// here
-																		// to
-																		// check
-																		// if
-																		// ninja
-																		// got
-																		// shot
+								// here
+								// to
+								// check
+								// if
+								// ninja
+								// got
+								// shot
 								currNinja.gotShot(); // will remove later
 								grid[row][col] = null;
 								fixTheNull(row, col);
@@ -967,24 +971,24 @@ public class Grid implements Serializable {
 						|| !(grid[row][col] instanceof NinjaOctopi)) {
 					if (grid[row][col] instanceof Room) {
 						System.out.println("You shot a wall of a room"); // Prints
-																			// when
-																			// you
-																			// shoot
-																			// a
-																			// room
+						// when
+						// you
+						// shoot
+						// a
+						// room
 						break; // only here to check if this works
 					} else if (grid[row][col] instanceof NinjaOctopi) {
 						for (NinjaOctopi currNinja : ninjaOctopi) {
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]) {
 								System.out.println("Totally got shot"); // Placed
-																		// here
-																		// to
-																		// check
-																		// if
-																		// ninja
-																		// got
-																		// shot
+								// here
+								// to
+								// check
+								// if
+								// ninja
+								// got
+								// shot
 								currNinja.gotShot(); // will remove later
 								grid[row][col] = null;
 								fixTheNull(row, col);
@@ -1003,24 +1007,24 @@ public class Grid implements Serializable {
 						|| !(grid[row][col] instanceof NinjaOctopi)) {
 					if (grid[row][col] instanceof Room) {
 						System.out.println("You shot a wall of a room"); // Prints
-																			// when
-																			// you
-																			// shoot
-																			// a
-																			// room
+						// when
+						// you
+						// shoot
+						// a
+						// room
 						break; // only here to check if this works
 					} else if (grid[row][col] instanceof NinjaOctopi) {
 						for (NinjaOctopi currNinja : ninjaOctopi) {
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]) {
 								System.out.println("Totally got shot"); // Placed
-																		// here
-																		// to
-																		// check
-																		// if
-																		// ninja
-																		// got
-																		// shot
+								// here
+								// to
+								// check
+								// if
+								// ninja
+								// got
+								// shot
 								currNinja.gotShot(); // will remove later
 								grid[row][col] = null;
 								fixTheNull(row, col);
@@ -1038,24 +1042,24 @@ public class Grid implements Serializable {
 						|| !(grid[row][col] instanceof NinjaOctopi)) {
 					if (grid[row][col] instanceof Room) {
 						System.out.println("You shot a wall of a room"); // Prints
-																			// when
-																			// you
-																			// shoot
-																			// a
-																			// room
+						// when
+						// you
+						// shoot
+						// a
+						// room
 						break; // only here to check if this works
 					} else if (grid[row][col] instanceof NinjaOctopi) {
 						for (NinjaOctopi currNinja : ninjaOctopi) {
 							int[] shotPosition = currNinja.getPosition();
 							if (grid[row][col] == grid[shotPosition[0]][shotPosition[1]]) {
 								System.out.println("Totally got shot"); // Placed
-																		// here
-																		// to
-																		// check
-																		// if
-																		// ninja
-																		// got
-																		// shot
+								// here
+								// to
+								// check
+								// if
+								// ninja
+								// got
+								// shot
 								currNinja.gotShot(); // will remove later
 								grid[row][col] = null;
 								fixTheNull(row, col);
@@ -1071,8 +1075,8 @@ public class Grid implements Serializable {
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("You shot a wall"); // This is here only to check
-													// if a bullet makes it all
-													// the way through
+			// if a bullet makes it all
+			// the way through
 			// to the end of the world, if this prints along with a ninja
 			// getting shot
 		} finally { // please let me know
@@ -1196,6 +1200,53 @@ public class Grid implements Serializable {
 
 	public boolean showWin() {
 		return win;
+	}
+
+	public static void saveLivesAndAmmo(String fileName) {
+		// TODO Auto-generated method stub
+		FileOutputStream fos;
+		try {
+			fos = new FileOutputStream(fileName + ".taha2");
+			
+
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			oos.writeObject(thePlayer);
+			oos.close();
+			
+			fos = new FileOutputStream(fileName + ".taha3");
+			ObjectOutputStream oos2 = new ObjectOutputStream(fos);
+			oos2.writeObject(briefcase);
+			oos2.close();
+		} catch (FileNotFoundException e) {
+			// do nothing
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static void loadLivesAndAmmo(String fileName){
+		try {
+			FileInputStream fis2 = new FileInputStream(fileName + ".taha3");
+			ObjectInputStream ois2 = new ObjectInputStream(fis2);
+			briefcase = (int[]) ois2.readObject();
+			
+			FileInputStream fis = new FileInputStream(fileName + ".taha2");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			thePlayer = (Taha) ois.readObject();
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

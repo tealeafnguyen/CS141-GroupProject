@@ -319,7 +319,8 @@ public class UserInterface implements Serializable {
 
 			FileWriter ff = new FileWriter(".savedata", true);
 			PrintWriter pw = new PrintWriter(ff);
-			pw.println("FileName");
+			pw.println(FileName);
+			pw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -330,8 +331,8 @@ public class UserInterface implements Serializable {
 		File fileReader = new File(".savedata");
 		try {
 			Scanner fileR = new Scanner(fileReader);
+			System.out.println("Here are the List of current saved game files:");
 			while(fileR.hasNextLine()){
-				System.out.println("Here are the List of current saved game files:");
 				System.out.println(fileR.nextLine());
 			}
 		} catch (FileNotFoundException e) {

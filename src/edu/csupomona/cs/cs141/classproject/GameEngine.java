@@ -19,6 +19,8 @@ import java.util.Scanner;
  */
 public class GameEngine implements Serializable { //A lot of stuff has been moved to Grid
 
+	private static final String String = null;
+
 	private Taha thePlayer;
 
 	private Grid grid;
@@ -154,6 +156,7 @@ public class GameEngine implements Serializable { //A lot of stuff has been move
 	public void saveGame(String fileName){
 
 		try {
+			Grid.saveLivesAndAmmo(fileName);
 			FileOutputStream fos = new FileOutputStream(fileName);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(grid);
@@ -172,6 +175,7 @@ public class GameEngine implements Serializable { //A lot of stuff has been move
 
 	public void loadGame(String fileName){
 		try {
+			Grid.loadLivesAndAmmo(fileName);
 			FileInputStream fis = new FileInputStream(fileName);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			grid = (Grid) ois.readObject();
