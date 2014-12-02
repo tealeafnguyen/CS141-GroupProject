@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -18,6 +19,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 
 
@@ -405,6 +407,19 @@ public class UserInterface implements Serializable {
 		}
 
 
+	}
+	public void printLogo(){
+		try {
+			
+			FileReader fr = new FileReader("theMainText.txt");
+			Scanner fs = new Scanner(fr);
+			while(fs.hasNextLine()){
+				System.out.println(fs.nextLine());
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 

@@ -23,7 +23,7 @@ public class TahasJapAdv implements Serializable {
 		if (args.length == 0) {
 			int userChoice = 0;
 			UserInterface UI = new UserInterface();
-
+			UI.printLogo();
 			UI.FirstMenu();
 
 		} else {
