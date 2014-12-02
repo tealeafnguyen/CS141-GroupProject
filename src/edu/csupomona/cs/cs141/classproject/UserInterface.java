@@ -391,8 +391,7 @@ public class UserInterface implements Serializable {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			gameEng = (GameEngine) ois.readObject();
 			Taha testPlayer = gameEng.getPlayer();
-			System.out.println(testPlayer.showLives()); // do these two match up?
-			System.out.println(gameEng.lives());
+			gameEng.setPlayer(testPlayer);
 			ois.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
