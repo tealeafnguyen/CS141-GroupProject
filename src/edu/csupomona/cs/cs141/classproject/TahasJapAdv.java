@@ -19,6 +19,7 @@ public class TahasJapAdv implements Serializable {
 
 
 	public static void main(String[] args) {
+		
 		if (args.length == 0) {
 			int userChoice = 0;
 			UserInterface UI = new UserInterface();

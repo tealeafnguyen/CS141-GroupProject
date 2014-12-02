@@ -19,8 +19,6 @@ import java.util.Scanner;
  */
 public class GameEngine implements Serializable { //A lot of stuff has been moved to Grid
 
-	private static final String String = null;
-
 	private Taha thePlayer;
 
 	private Grid grid;
@@ -153,44 +151,9 @@ public class GameEngine implements Serializable { //A lot of stuff has been move
 		}
 	}
 
-	public void saveGame(String fileName){
 
-		try {
-
-			FileOutputStream fos = new FileOutputStream(fileName);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(grid);
-			oos.close();
-			System.out.println("Game Saved Successfully.");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Save Game Unsuccessful.");
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Could not save game.");
-			e.printStackTrace();
-		}
-	}
-
-	public void loadGame(String fileName){
-		try {
-
-			FileInputStream fis = new FileInputStream(fileName);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			grid = (Grid) ois.readObject();
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+	public void setPlayer(Taha player){
+		grid.setPlayer(player);
 	}
 
 }

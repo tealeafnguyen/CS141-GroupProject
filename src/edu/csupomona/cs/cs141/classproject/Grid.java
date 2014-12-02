@@ -1202,52 +1202,7 @@ public class Grid implements Serializable {
 		return win;
 	}
 
-	public static void saveLivesAndAmmo(String fileName) {
-		// TODO Auto-generated method stub
-		FileOutputStream fos;
-		try {
-			fos = new FileOutputStream(fileName + ".taha2");
-			
 
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-			oos.writeObject(thePlayer);
-			oos.close();
-			
-			fos = new FileOutputStream(fileName + ".taha3");
-			ObjectOutputStream oos2 = new ObjectOutputStream(fos);
-			oos2.writeObject(briefcase);
-			oos2.close();
-		} catch (FileNotFoundException e) {
-			// do nothing
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-	
-	public static void loadLivesAndAmmo(String fileName){
-		try {
-			FileInputStream fis2 = new FileInputStream(fileName + ".taha3");
-			ObjectInputStream ois2 = new ObjectInputStream(fis2);
-			briefcase = (int[]) ois2.readObject();
-			
-			FileInputStream fis = new FileInputStream(fileName + ".taha2");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			thePlayer = (Taha) ois.readObject();
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	public void setPlayer(Taha player) {
 		thePlayer = player;
