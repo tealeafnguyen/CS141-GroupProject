@@ -1,4 +1,19 @@
 /**
+ * CS 141: Introduction to Programming and Problem Solving
+ * Professor: Edwin Rodr&iacute;guez
+ *
+ * Programming Project
+ *
+ * This class contains the command line user interface part of the game
+ * it takes in the input from user uses the gameengine to make the changes to the
+ * grid thats printed out, this class also saves and loads the game.
+ *
+ * Team Crazy Bananas
+ * Taha Khan
+ * Farzad Kosar
+ * Yool Weeji Jeon (James)
+ * Isaac Gonzalez
+ * Thomas Nguyen
  * 
  */
 package edu.csupomona.cs.cs141.classproject;
@@ -29,26 +44,37 @@ import java.util.Scanner;
 
 import edu.csupomona.cs.cs141.classproject.GUIGame.MainMenuActionListener;
 
-/**
- * @author Isa
- *
- */
-public class UserInterface implements Serializable {
 
+public class UserInterface {
 
+	/**
+	 * This creates the Taha object that holds most of the , for more information
+	 * go to the Taha class's javadoc
+	 */
 	private Taha player = new Taha();
-
+	/**
+	 * creates the GameEngine object and initializes it with the by sending in the 
+	 * player object
+	 */
 	GameEngine gameEng = new GameEngine(player);
-
+	/**
+	 * Universal Scanner to take input from the user.
+	 */
 	Scanner kb = new Scanner(System.in);
-
+	/**
+	 * this boolean variable determines if debug mode is on or off.
+	 */
 	private boolean debug = false;
-
+	/**
+	 * this boolean variable helps check if the user has looked around
+	 * once per turn or not.
+	 */
 	private boolean lookAroundUsedOnce = false;
-
-	// Menu has been updated
-	// I've disabled it for now.
-	//
+	/**
+	 * This is the first menu the User encounters when the game is launched
+	 * this method contains the takes the input from the user and sends the
+	 * input to the FirstMenuRedirection method.
+	 */
 	public void FirstMenu(){
 		int userChoice = 0;
 
@@ -77,7 +103,11 @@ public class UserInterface implements Serializable {
 
 	}
 
-
+	/**
+	 * This method takes in the user's choice and opens the
+	 * appropriate method
+	 * @param userChoice the user input taken in from the FirstMenu method
+	 */
 
 	public void FirstMenuRedirection(int userChoice) {
 		// TODO Auto-generated method stub
@@ -117,7 +147,14 @@ public class UserInterface implements Serializable {
 		case 5: System.exit(0);
 		}
 	}
-
+	/**
+	 * This method does calls on multiple other methods to check if
+	 * the game is won, if the debug mode is enabled, if the player is inviniclbe
+	 * this method also prints out the grid, it also takes the input 
+	 * from the user and does the appropriate action. We incorporated recursion
+	 * into this method, but since it barely uses any memory, it should not cause
+	 * any errors.
+	 */
 	public void options(){
 
 		String playerChoice = "AWWWWWWWWWWW YEEEEEEEEEE, LET THE GAMES BEGIN";
@@ -126,7 +163,7 @@ public class UserInterface implements Serializable {
 			gameEng.callGridSeeReset();
 			gameEng.callGridSeeAround();
 			debugCheck();
-			printGrid();
+			gameEng.printGrid();
 			gameEng.gameOverCheck();
 			if(gameEng.gameOverCheck()){
 				player = new Taha();
@@ -269,17 +306,29 @@ public class UserInterface implements Serializable {
 	//				System.exit(0);
 	//		}
 
+	/**
+	 * this method asks the user which direction to shoot then calls
+	 * the shoot method in the game engine.
+	 */
 	public void playerShoot(){
 		System.out.println("Which direction to shoot? 1 up 2 left 3 down 4 right");
 		int shootChoice = kb.nextInt();
 		gameEng.shootDirection(shootChoice);
 	}
 
+	/**
+	 * This method shows the amount of lives left and prints it on the 
+	 * screen, the lives are shown by called the lives method in from
+	 * the game engine.
+	 */
 	public void playerStatus(){
 		System.out.println("Lives: " + gameEng.lives()+ " Ammo: "+ gameEng.ammo());
 		System.out.println("Turns invincible: "+ gameEng.cantDie() );
 	}
-
+	/**
+	 * This method checks if the game is won or not, it is called in options methods, 
+	 * and if the game is won, the player is redirected to the main menu.
+	 */
 	public void doIWinYet(){
 		if(gameEng.recieveWinFromGrid()){
 			System.out.println("You have won the game");			
@@ -291,18 +340,34 @@ public class UserInterface implements Serializable {
 			FirstMenu();
 		}
 	}
+	/**
+	 * This method is called once the player has used
+	 * the look around ability once per turn, then
+	 * it doesn't allow the player to use it again.
+	 */
 	public void lookAroundUsed(){
 		lookAroundUsedOnce = true;
 	}
+	/**
+	 * This method resets the boolean value to false
+	 * when the player's turn is started, so that the
+	 * player can use the look around ability.
+	 */
 	public void resetLookAroundUsed(){
 		lookAroundUsedOnce = false;
 	}
+	/**
+	 * This method checks the boolean value to determine
+	 * if the lookaround ability is already used or not,
+	 * the look around ability is only available to the player
+	 * once per turn.
+	 */
 	public void checkLookAroundUsed(){
 		if(lookAroundUsedOnce){
 			System.out.println("You can only look ahead once per turn.");
 		} else {
 			wantedToSee();
-			printGrid();
+			gameEng.printGrid();
 			System.out.println("Press 1 to continue.");
 			kb.next();
 			kb.nextLine();
@@ -310,17 +375,11 @@ public class UserInterface implements Serializable {
 			options();
 		}
 	}
-	public void doYouWannaSee(){
-		int lookFurther = 0;
-		System.out.println("Do you want to look further in a direction? 1 yes 2 no");
-		lookFurther = kb.nextInt();
-		if(lookFurther == 1){
-			wantedToSee();
-		}
-		else{
-			System.out.println("Guess you wanna be blind");
-		}
-	}
+/**
+ * This method makes/edits a file called ".savedata" and makes
+ * a list of save games in there.
+ * @param FileName
+ */
 	public void makeAListofSaves(String FileName){
 		try {
 
@@ -330,10 +389,17 @@ public class UserInterface implements Serializable {
 			pw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Something's wrong, bruh");
+		} finally{
+			//do nothing
 		}
 
 	}
+	/**
+	 * This method opens the ".savedata" file and prints out the list
+	 * of save files from there to the screen, so the user can use it
+	 * to type the load files name from here.
+	 */
 	public void printTheListofSaves(){
 		File fileReader = new File(".savedata");
 		try {
@@ -348,6 +414,10 @@ public class UserInterface implements Serializable {
 		}
 
 	}
+	/**
+	 * This method asks for user input and then reveals one additional block
+	 * depending on the direction the user inputs.
+	 */
 	public void wantedToSee(){
 		String lookDirection = "0";
 		System.out.println("Which direction do you wanna look at?");
@@ -356,16 +426,28 @@ public class UserInterface implements Serializable {
 		kb.nextLine();
 		gameEng.playerLook(lookDirection);
 	}
-
+	/**
+	 * This method just enables the debug mode. 
+	 * 
+	 */
 	public void debugCheck(){
 		if(debug == true){
 			debugActivate();
 		}
 	}
-
+	/**
+	 * This method calls the debug mode method from the 
+	 * game engine
+	 */
 	public void debugActivate(){
 		gameEng.debug();
 	}
+	/**
+	 * this method allows the user to save the game. the method saves
+	 * the game engine object into a binary file and catches 
+	 * exceptions and prints out an error.
+	 * @param fileName
+	 */
 	public void saveGame(String fileName){
 
 		try {
@@ -385,7 +467,13 @@ public class UserInterface implements Serializable {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * The loadGame method loads allows the user to load
+	 * a previously saved game into memory, what it actually
+	 * does is load the game engine object from file and load 
+	 * it to memory.
+	 * @param fileName
+	 */
 	public void loadGame(String fileName){
 		try {
 
@@ -409,20 +497,14 @@ public class UserInterface implements Serializable {
 
 	}
 	
-	public void printGrid() {
-		GridMember gm = null;
-		for(int i = 0; i < 9; i++){
-			for(int j = 0; j < 9; j++){
-				gm = gameEng.getGM(i, j);
-				System.out.print(gm.toString());
-			}
-			System.out.println();
-		}
-	}
-	
+	/**
+	 * printLogo method is just used to make the UI a 
+	 * bit more snazzy, it prints out an ascii logo from
+	 * a file when the game is started.
+	 */
 	public void printLogo(){
 		try {
-			
+
 			FileReader fr = new FileReader("theMainText.txt");
 			Scanner fs = new Scanner(fr);
 			while(fs.hasNextLine()){
