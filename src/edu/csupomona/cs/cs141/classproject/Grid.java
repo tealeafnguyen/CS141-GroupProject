@@ -778,7 +778,6 @@ public class Grid implements Serializable {
 				if (tried && currNinja.getPlayerInSight()) {
 					Random rand = new Random();
 					direction = rand.nextInt(4) + 1;
-					System.out.println("Avoided room loop");
 				}
 				try {
 					switch (direction) {
