@@ -517,11 +517,12 @@ public class Grid implements Serializable {
 	}
 
 	/**
-	 * There is no real use to this method, please get rid of this because the
-	 * game engine can print it by itself.
+	 * The printGrid method is a for loop that is used
+	 * to print out the 9 x 9 grid. This is called usually
+	 * after an action is performed.
 	 */
 
-	public void printGrid() { // this will eventually be moved to UserInterface
+	public void printGrid() {
 
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[i].length; j++) {
@@ -532,6 +533,12 @@ public class Grid implements Serializable {
 		System.out.println();
 
 	}
+	
+	/**
+	 * The printGUIGrid is a method that is similiar to printGrid,
+	 * but instead wors with image files. This is mainly here
+	 * to work with the GUI.
+	 */ 
 
 	public void printGUIGrid() { // still need to make major changes
 
