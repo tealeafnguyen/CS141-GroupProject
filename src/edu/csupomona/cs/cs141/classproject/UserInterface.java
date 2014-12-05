@@ -42,7 +42,7 @@ import java.util.Scanner;
 
 
 
-import edu.csupomona.cs.cs141.classproject.GUIGame.MainMenuActionListener;
+
 
 
 public class UserInterface {
@@ -163,7 +163,7 @@ public class UserInterface {
 			gameEng.callGridSeeReset();
 			gameEng.callGridSeeAround();
 			debugCheck();
-			gameEng.printGrid();
+			printGrid();
 			gameEng.gameOverCheck();
 			if(gameEng.gameOverCheck()){
 				player = new Taha();
@@ -367,7 +367,7 @@ public class UserInterface {
 			System.out.println("You can only look ahead once per turn.");
 		} else {
 			wantedToSee();
-			gameEng.printGrid();
+//			gameEng.printGrid();
 			System.out.println("Press 1 to continue.");
 			kb.next();
 			kb.nextLine();
@@ -496,7 +496,24 @@ public class UserInterface {
 
 
 	}
-	
+	/**
+	 * This method is used to print the grid out to
+	 * the user in a form of readable strings.
+	 * It uses toString methods from the individual
+	 * objects in the grid to print out their
+	 * specific icon.
+	 */
+		public void printGrid() {
+				GridMember gm = null;
+				for(int i = 0; i < 9; i++){
+				for(int j = 0; j < 9; j++){
+						gm = gameEng.getGM(i, j);
+						System.out.print(gm.toString());
+					}
+					System.out.println();
+				}
+			}
+
 	/**
 	 * printLogo method is just used to make the UI a 
 	 * bit more snazzy, it prints out an ascii logo from
