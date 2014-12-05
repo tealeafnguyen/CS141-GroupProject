@@ -21,8 +21,13 @@ import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
+/**
+ *  * TahasJapAdv class is only used to start the program,
+ * this class contains the main method.
+ */
 public class TahasJapAdv{
+
+
 
 	/**
 	 * This is the main method used to either start the command
@@ -32,8 +37,6 @@ public class TahasJapAdv{
 	 * currently the only argument is "-gui" which launches
 	 * the gui. 
 	 */
-
-
 	public static void main(String[] args) {
 		
 		if (args.length == 0) {

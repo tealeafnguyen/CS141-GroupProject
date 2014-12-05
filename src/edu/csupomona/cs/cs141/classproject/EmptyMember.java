@@ -27,7 +27,14 @@ import javax.swing.*;
 
 
 
-
+/**
+ * * This is the EmptyMember class, it implements GridMember because it
+ * is a part of the 9x9 grid and serializable so it can be stored with
+ * the grid object to save. This object represents the EmptyMembers in the
+ * grid, ie where there aren't any rooms, ninjaOctopi, etc.
+ *
+ *
+ */
 public class EmptyMember implements GridMember, Serializable {
 	/**
 	 * The boolean seen, determines if an object is to be 

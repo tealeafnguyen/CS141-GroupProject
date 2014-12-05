@@ -29,8 +29,9 @@ import java.util.Scanner;
 
 
 /**
-
- *
+* This class is used to get information from the UserInterface and then pass that
+* info in over to the Grid for the Grid to use. It essentially acts as a sort
+* of "middleman", that way the UserInterface that the game uses can be modular.
  */
 public class GameEngine implements Serializable { 
 

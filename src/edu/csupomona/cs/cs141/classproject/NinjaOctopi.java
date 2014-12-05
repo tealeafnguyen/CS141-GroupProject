@@ -24,7 +24,11 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 /**
  * @author CrazyBananas
- *
+ *This is the ninjaOctopi class, this class holds
+* the enemies, they may kill Taha if they are within
+* range, they move randomly unless Taha is in sight,
+* in which case they will follow him unless they lose
+* sight.
  */
 public class NinjaOctopi extends Entity implements GridMember, Serializable {
 

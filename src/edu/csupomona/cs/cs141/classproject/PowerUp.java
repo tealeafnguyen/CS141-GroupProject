@@ -21,7 +21,14 @@ package edu.csupomona.cs.cs141.classproject;
 
 import java.io.Serializable;
 
-
+/**
+ * * This is the abstract class of PowerUps, it creates a 
+* template for the three power ups avaible in the game
+* this abstract class implements GridMember since the objects
+* based on this class will spawn on the grid and also serializable
+* so the powerups can be saved and loaded.
+*
+ */
 public abstract class PowerUp implements GridMember, Serializable{
 	/**
 	 * This boolean determines if the powerup is 

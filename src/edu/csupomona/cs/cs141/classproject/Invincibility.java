@@ -21,7 +21,13 @@ package edu.csupomona.cs.cs141.classproject;
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
-
+/**
+ * * This class, Invincibility, is an extension of the class, PowerUp, because this
+* class needs to be able to read and take the methods to be used in this class
+* to function properly. It also implements Serializable to be able to save and
+* load.
+ *
+ */
 public class Invincibility extends PowerUp implements GridMember, Serializable {
 	/**
 	 * This class takes in the field, result, and prints out if the result is

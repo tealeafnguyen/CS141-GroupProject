@@ -36,15 +36,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-
-
-
-
-
-
-
-
-
+/**
+ *  This class contains the command line user interface part of the game
+ * it takes in the input from user uses the gameengine to make the changes to the
+ * grid thats printed out, this class also saves and loads the game.
+ *
+ */
 public class UserInterface {
 
 	/**
