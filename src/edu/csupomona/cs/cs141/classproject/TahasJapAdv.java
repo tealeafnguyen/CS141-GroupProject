@@ -44,7 +44,8 @@ public class TahasJapAdv{
 
 		} else {
 			if (args[0].equals("-gui")) {
-				GUIMainMenu gui = new GUIMainMenu();
+				// launch gui
+				
 			}
 		}
 	}
