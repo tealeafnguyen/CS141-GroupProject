@@ -1,3 +1,22 @@
+/**
+* CS 141: Introduction to Programming and Problem Solving
+* Professor: Edwin Rodr&iacute;guez
+*
+* Programming Project
+*
+* This is the ninjaOctopi class, this class holds
+* the enemies, they may kill Taha if they are within
+* range, they move randomly unless Taha is in sight,
+* in which case they will follow him unless they lose
+* sight.
+*
+* Team Crazy Bananas
+* Taha Khan
+* Farzad Kosar
+* Yool Weeji Jeon (James)
+* Isaac Gonzalez
+* Thomas Nguyen
+*/ 
 package edu.csupomona.cs.cs141.classproject;
 import java.io.Serializable;
 import java.util.Random;
