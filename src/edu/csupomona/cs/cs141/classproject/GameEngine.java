@@ -1,6 +1,21 @@
 /**
- * 
- */
+* CS 141: Introduction to Programming and Problem Solving
+* Professor: Edwin Rodr&iacute;guez
+*
+* Programming Project
+*
+* This class is used to get information from the UserInterface and then pass that
+* info in over to the Grid for the Grid to use. It essentially acts as a sort
+* of "middleman", that way the UserInterface that the game uses can be modular.
+* @author CrazyBananas
+*
+* Team Crazy Bananas
+* Taha Khan
+* Farzad Kosar
+* Yool Weeji Jeon (James)
+* Isaac Gonzalez
+* Thomas Nguyen
+*/ 
 package edu.csupomona.cs.cs141.classproject;
 
 import java.io.FileInputStream;
@@ -14,10 +29,7 @@ import java.util.Scanner;
 
 
 /**
- * This class is used to get information from the UserInterface and then pass that
- * info in over to the Grid for the Grid to use. It essentially acts as a sort
- * of "middleman", that way the UserInterface that the game uses can be modular.
- * @author CrazyBananas
+
  *
  */
 public class GameEngine implements Serializable { 
