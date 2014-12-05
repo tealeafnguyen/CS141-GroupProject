@@ -1,3 +1,8 @@
+package edu.csupomona.cs.cs141.classproject;
+import java.io.Serializable;
+
+import javax.swing.ImageIcon;
+
 /**
 * CS 141: Introduction to Programming and Problem Solving
 * Professor: Edwin Rodr&iacute;guez
