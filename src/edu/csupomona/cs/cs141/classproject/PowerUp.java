@@ -35,8 +35,7 @@ public abstract class PowerUp implements GridMember, Serializable{
 		isUsed = true;
 	}
 	
-	
-	// isUsed was private so I had to do this, are you u sure we aren't breaking encapsulation?
+
 	public boolean isUsed(){
 		boolean returningIsUsed = isUsed;
 		return returningIsUsed;
